@@ -1,0 +1,574 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Clients confirms & clears list 1`] = `
+<div-page
+  data-testid="tableClients"
+>
+  <table-table>
+    <table-header>
+      <column-header>
+        Ref
+      </column-header>
+      <column-header>
+        Name
+      </column-header>
+      <column-header>
+        Phone
+      </column-header>
+    </table-header>
+    <table-item>
+      <column-text>
+        1
+      </column-text>
+      <column-text>
+        clientA
+      </column-text>
+      <column-text>
+        1235551234
+      </column-text>
+      <table-buttons>
+        <button
+          data-testid="buttonEdit1"
+        >
+          Edit
+        </button>
+        <button
+          data-testid="buttonDel1"
+        >
+          Del
+        </button>
+      </table-buttons>
+    </table-item>
+  </table-table>
+  <button
+    data-testid="buttonAdd"
+  >
+    Add
+  </button>
+  <button
+    data-testid="buttonClear"
+  >
+    Clear
+  </button>
+</div-page>
+`;
+
+exports[`Clients confirms & clears list 2`] = `
+<div-page
+  data-testid="tableClients"
+>
+  <table-table>
+    <table-header>
+      <column-header>
+        Ref
+      </column-header>
+      <column-header>
+        Name
+      </column-header>
+      <column-header>
+        Phone
+      </column-header>
+    </table-header>
+    <table-item>
+      <column-text>
+        1
+      </column-text>
+      <column-text>
+        clientA
+      </column-text>
+      <column-text>
+        1235551234
+      </column-text>
+      <table-buttons>
+        <button
+          data-testid="buttonEdit1"
+        >
+          Edit
+        </button>
+        <button
+          data-testid="buttonDel1"
+        >
+          Del
+        </button>
+      </table-buttons>
+    </table-item>
+  </table-table>
+  <button
+    data-testid="buttonAdd"
+  >
+    Add
+  </button>
+  <button
+    data-testid="buttonClear"
+  >
+    Confirm
+  </button>
+</div-page>
+`;
+
+exports[`Clients confirms & clears list 3`] = `
+<div-page
+  data-testid="tableClients"
+>
+  <table-table>
+    <table-header>
+      <column-header>
+        Ref
+      </column-header>
+      <column-header>
+        Name
+      </column-header>
+      <column-header>
+        Phone
+      </column-header>
+    </table-header>
+  </table-table>
+  <button
+    data-testid="buttonAdd"
+  >
+    Add
+  </button>
+  <button
+    data-testid="buttonClear"
+  >
+    Clear
+  </button>
+</div-page>
+`;
+
+exports[`Clients enters another into list 1`] = `
+<div-page
+  data-testid="tableClients"
+>
+  <table-table>
+    <table-header>
+      <column-header>
+        Ref
+      </column-header>
+      <column-header>
+        Name
+      </column-header>
+      <column-header>
+        Phone
+      </column-header>
+    </table-header>
+    <table-item>
+      <column-text>
+        1
+      </column-text>
+      <column-text>
+        clientA
+      </column-text>
+      <column-text>
+        1235551234
+      </column-text>
+      <table-buttons>
+        <button
+          data-testid="buttonEdit1"
+        >
+          Edit
+        </button>
+        <button
+          data-testid="buttonDel1"
+        >
+          Del
+        </button>
+      </table-buttons>
+    </table-item>
+  </table-table>
+  <button
+    data-testid="buttonAdd"
+  >
+    Add
+  </button>
+  <button
+    data-testid="buttonClear"
+  >
+    Clear
+  </button>
+</div-page>
+`;
+
+exports[`Clients enters another into list 2`] = `
+<div-page
+  data-testid="tableClients"
+>
+  <table-table>
+    <table-header>
+      <column-header>
+        Ref
+      </column-header>
+      <column-header>
+        Name
+      </column-header>
+      <column-header>
+        Phone
+      </column-header>
+    </table-header>
+    <table-item>
+      <column-text>
+        1
+      </column-text>
+      <column-text>
+        clientA
+      </column-text>
+      <column-text>
+        1235551234
+      </column-text>
+      <table-buttons>
+        <button
+          data-testid="buttonEdit1"
+        >
+          Edit
+        </button>
+        <button
+          data-testid="buttonDel1"
+        >
+          Del
+        </button>
+      </table-buttons>
+    </table-item>
+    <table-item>
+      <column-text>
+        2
+      </column-text>
+      <column-text>
+        clientC
+      </column-text>
+      <column-text>
+        0005551113
+      </column-text>
+      <table-buttons>
+        <button
+          data-testid="buttonEdit2"
+        >
+          Edit
+        </button>
+        <button
+          data-testid="buttonDel2"
+        >
+          Del
+        </button>
+      </table-buttons>
+    </table-item>
+  </table-table>
+  <button
+    data-testid="buttonAdd"
+  >
+    Add
+  </button>
+  <button
+    data-testid="buttonClear"
+  >
+    Clear
+  </button>
+</div-page>
+`;
+
+exports[`Clients enters into list 1`] = `
+<div-page
+  data-testid="tableClients"
+>
+  <table-table>
+    <table-header>
+      <column-header>
+        Ref
+      </column-header>
+      <column-header>
+        Name
+      </column-header>
+      <column-header>
+        Phone
+      </column-header>
+    </table-header>
+    <table-item>
+      <column-text>
+        1
+      </column-text>
+      <column-text>
+        clientB
+      </column-text>
+      <column-text>
+        0005551112
+      </column-text>
+      <table-buttons>
+        <button
+          data-testid="buttonEdit1"
+        >
+          Edit
+        </button>
+        <button
+          data-testid="buttonDel1"
+        >
+          Del
+        </button>
+      </table-buttons>
+    </table-item>
+  </table-table>
+  <button
+    data-testid="buttonAdd"
+  >
+    Add
+  </button>
+  <button
+    data-testid="buttonClear"
+  >
+    Clear
+  </button>
+</div-page>
+`;
+
+exports[`Clients renders page 1`] = `
+<div-page
+  data-testid="tableClients"
+>
+  <table-table>
+    <table-header>
+      <column-header>
+        Ref
+      </column-header>
+      <column-header>
+        Name
+      </column-header>
+      <column-header>
+        Phone
+      </column-header>
+    </table-header>
+  </table-table>
+  <button
+    data-testid="buttonAdd"
+  >
+    Add
+  </button>
+  <button
+    data-testid="buttonClear"
+  >
+    Clear
+  </button>
+</div-page>
+`;
+
+exports[`Invoices renders page 1`] = `
+<div-page
+  data-testid="tableInvoices"
+>
+  <table-table>
+    <table-header>
+      <column-header>
+        Ref
+      </column-header>
+      <column-header>
+        Date
+      </column-header>
+      <column-header>
+        Client
+      </column-header>
+      <column-header>
+        Jobs
+      </column-header>
+      <column-header>
+        Payments
+      </column-header>
+      <column-header>
+        Balance
+      </column-header>
+      <column-header>
+        Send
+      </column-header>
+    </table-header>
+  </table-table>
+  <button
+    data-testid="buttonAdd"
+  >
+    Add
+  </button>
+  <button
+    data-testid="buttonClear"
+  >
+    Clear
+  </button>
+</div-page>
+`;
+
+exports[`Jobs renders page 1`] = `
+<div-page
+  data-testid="tableJobs"
+>
+  <table-table>
+    <table-header>
+      <column-header>
+        Ref
+      </column-header>
+      <column-header>
+        Date
+      </column-header>
+      <column-header>
+        Client
+      </column-header>
+      <column-header>
+        Desc
+      </column-header>
+      <column-header>
+        Money
+      </column-header>
+    </table-header>
+  </table-table>
+  <button
+    data-testid="buttonAdd"
+  >
+    Add
+  </button>
+  <button
+    data-testid="buttonClear"
+  >
+    Clear
+  </button>
+</div-page>
+`;
+
+exports[`Payments renders page 1`] = `
+<div-page
+  data-testid="tablePayments"
+>
+  <table-table>
+    <table-header>
+      <column-header>
+        Ref
+      </column-header>
+      <column-header>
+        Date
+      </column-header>
+      <column-header>
+        Client
+      </column-header>
+      <column-header>
+        Money
+      </column-header>
+    </table-header>
+  </table-table>
+  <button
+    data-testid="buttonAdd"
+  >
+    Add
+  </button>
+  <button
+    data-testid="buttonClear"
+  >
+    Clear
+  </button>
+</div-page>
+`;
+
+exports[`Settings renders page 1`] = `
+<div-page
+  data-testid="tableSettings"
+>
+  <table-table>
+    <table-item>
+      <table-row
+        style="display: block;"
+      >
+        <column-header>
+          Client Prefix
+        </column-header>
+        <div>
+          <column-text>
+            C
+          </column-text>
+        </div>
+      </table-row>
+      <table-row
+        style="display: block;"
+      >
+        <column-header>
+          Client Next
+        </column-header>
+        <div>
+          <column-text>
+            1
+          </column-text>
+        </div>
+      </table-row>
+      <table-row
+        style="display: block;"
+      >
+        <column-header>
+          Job Prefix
+        </column-header>
+        <div>
+          <column-text>
+            J
+          </column-text>
+        </div>
+      </table-row>
+      <table-row
+        style="display: block;"
+      >
+        <column-header>
+          Job Next
+        </column-header>
+        <div>
+          <column-text>
+            1
+          </column-text>
+        </div>
+      </table-row>
+      <table-row
+        style="display: block;"
+      >
+        <column-header>
+          Payment Prefix
+        </column-header>
+        <div>
+          <column-text>
+            P
+          </column-text>
+        </div>
+      </table-row>
+      <table-row
+        style="display: block;"
+      >
+        <column-header>
+          Payment Next
+        </column-header>
+        <div>
+          <column-text>
+            1
+          </column-text>
+        </div>
+      </table-row>
+      <table-row
+        style="display: block;"
+      >
+        <column-header>
+          Invoice Prefix
+        </column-header>
+        <div>
+          <column-text>
+            I
+          </column-text>
+        </div>
+      </table-row>
+      <table-row
+        style="display: block;"
+      >
+        <column-header>
+          Invoice Next
+        </column-header>
+        <div>
+          <column-text>
+            1
+          </column-text>
+        </div>
+      </table-row>
+      <table-buttons>
+        <button
+          data-testid="buttonEdit1"
+        >
+          Edit
+        </button>
+      </table-buttons>
+    </table-item>
+  </table-table>
+</div-page>
+`;

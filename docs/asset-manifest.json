@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/iou/static/css/main.c360cfb7.css",
-    "main.js": "/iou/static/js/main.feca56d6.js",
+    "main.js": "/iou/static/js/main.aaf2406f.js",
     "index.html": "/iou/index.html"
   },
   "entrypoints": [
     "static/css/main.c360cfb7.css",
-    "static/js/main.feca56d6.js"
+    "static/js/main.aaf2406f.js"
   ]
 }

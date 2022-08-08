@@ -12,7 +12,6 @@ const Jobs = ({ stJobs, aClients, newId = uuid }) =>
 			desc: ColumnText('Desc'),
 			money: ColumnText('Money'),
 		}} newRow={() => ({ id: newId(), date: today(), client: '', desc: 'job', money: 0 })} rows={stJobs} />
-		{aClients.map(c => c.id).join(';')}
 	</>)
 
 Jobs.propTypes = {

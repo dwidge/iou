@@ -1,6 +1,6 @@
-# carts
+# iou
 
-Generate schedules
+Make and send invoices
 
 # license
 

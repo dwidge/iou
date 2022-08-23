@@ -6,10 +6,10 @@ import { uuid } from '@dwidge/lib'
 const Clients = ({ stClients, newId = uuid }) =>
 	(<>
 		<Table name='Clients' schema={{
-			id: ColumnText('Ref'),
+			ref: ColumnText('Ref'),
 			name: ColumnText('Name'),
 			phone: ColumnText('Phone'),
-		}} newRow={() => ({ id: newId(), name: 'client', phone: '000' })} rows={stClients} />
+		}} newRow={() => ({ id: uuid(), ref: newId(), name: 'client', phone: '555' })} rows={stClients} />
 	</>)
 
 Clients.propTypes = {

@@ -7,13 +7,11 @@ const Settings = ({ stSettings }) =>
 		<Table name='Settings' schema={{
 			clnpre: ColumnText('Client Prefix'),
 			clnnext: ColumnText('Client Next'),
-			jobpre: ColumnText('Job Prefix'),
-			jobnext: ColumnText('Job Next'),
-			paypre: ColumnText('Payment Prefix'),
-			paynext: ColumnText('Payment Next'),
 			invpre: ColumnText('Invoice Prefix'),
 			invnext: ColumnText('Invoice Next'),
-		}} defaults={{}} rows={stSettings} pageLength={1} inlineHeaders={true} addDel={false} newRow={() => {}} />
+			recpre: ColumnText('Receipt Prefix'),
+			recnext: ColumnText('Receipt Next'),
+		}} defaults={{}} rows={[[stSettings[0]], ([o]) => stSettings[1](o)]} pageLength={1} inlineHeaders={true} addDel={false} newRow={() => {}} />
 	</>)
 
 Settings.propTypes = {

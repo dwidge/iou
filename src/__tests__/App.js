@@ -81,26 +81,6 @@ describe('Clients', () => {
 	})
 })
 
-describe('Jobs', () => {
-	test('renders page', () => {
-		render(<MemoryRouter initialEntries={['/jobs']}>
-			<App />
-		</MemoryRouter>)
-
-		expect(screen.getByTestId('tableJobs')).toMatchSnapshot()
-	})
-})
-
-describe('Payments', () => {
-	test('renders page', () => {
-		render(<MemoryRouter initialEntries={['/payments']}>
-			<App />
-		</MemoryRouter>)
-
-		expect(screen.getByTestId('tablePayments')).toMatchSnapshot()
-	})
-})
-
 describe('Invoices', () => {
 	test('renders page', () => {
 		render(<MemoryRouter initialEntries={['/invoices']}>
@@ -108,6 +88,26 @@ describe('Invoices', () => {
 		</MemoryRouter>)
 
 		expect(screen.getByTestId('tableInvoices')).toMatchSnapshot()
+	})
+})
+
+describe('Receipts', () => {
+	test('renders page', () => {
+		render(<MemoryRouter initialEntries={['/receipts']}>
+			<App />
+		</MemoryRouter>)
+
+		expect(screen.getByTestId('tableReceipts')).toMatchSnapshot()
+	})
+})
+
+describe('Statements', () => {
+	test('renders page', () => {
+		render(<MemoryRouter initialEntries={['/statements']}>
+			<App />
+		</MemoryRouter>)
+
+		expect(screen.getByTestId('tableStatements')).toMatchSnapshot()
 	})
 })
 

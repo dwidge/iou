@@ -1,33 +1,81 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Table, ColumnText, ColumnDate, ColumnRef, ColumnButton } from '@dwidge/table-react'
-import { today, uuid, getItemById } from '@dwidge/lib'
+import { Table, ColumnText, ColumnDate, ColumnRef, ColumnButton, getItemBy } from '@dwidge/table-react'
+import { today, uuid } from '@dwidge/lib'
+import { sendClient, newRef } from './lib'
+import { onChange } from '@dwidge/lib-react'
 
-const watsapp = (num, text) => {
-	if (!num) alert('Couldn\'t send, needs number')
-	else { window.open(`https://wa.me/${encodeURIComponent(num.split(' ').join(''))}?text=${encodeURIComponent(text)}`, '_blank') }
+import Form from 'react-bootstrap/Form'
+
+const txtDefault = `
+Hello [clientname],
+
+This is the invoice (ref [invoiceref]) for client (ref [clientref]). Please quote the invoice ref on your payment beneficiary ref.
+
+ClientRef: [clientref]
+InvoiceRef: [invoiceref]
+Date: [date]
+Summary: [summary]
+Total: R [total]
+`
+const fields = (row, client) => ({
+	'[clientname]': client.name,
+	'[clientref]': client.ref,
+	'[invoiceref]': row.ref,
+	'[date]': row.date,
+	'[summary]': row.summary,
+	'[total]': row.total.toFixed(2),
+})
+
+const Invoices = ({ stInvoices, aClients, stSettings }) => {
+	const [settings, setsettings] = stSettings
+	const txt = settings.txtInvoice || txtDefault
+
+	return (<>
+		<Table name='Invoices' schema={{
+			ref: ColumnText('InvoiceRef'),
+			client: ColumnRef('ClientRef', aClients, c => c.name, 'ref'),
+			date: ColumnDate('Date'),
+			summary: ColumnText('Summary'),
+			total: ColumnText('Total'),
+			_send: ColumnButton('Send', (_, row) => {
+				const client = getItemBy(aClients, row.client, 'ref')
+				sendClient(client, txt, fields(row, client))
+			}, () => 'Send'),
+		}} newRow={() => ({ id: uuid(), ref: newRef(stSettings)('invpre', 'invnext')(), client: '', date: today(), summary: '', total: 0 })} rows={stInvoices} inlineHeadersEdit={true} />
+		<Settings txt={[txt, txtInvoice => setsettings({ ...settings, txtInvoice })]} refPre={[settings.invpre, invpre => setsettings({ ...settings, invpre })]} refNext={[settings.invnext, invnext => setsettings({ ...settings, invnext })]} />
+	</>)
 }
 
-const Invoices = ({ stInvoices, aClients, newId = uuid }) =>
-	(<>
-		<Table name='Invoices' schema={{
-			id: ColumnText('Ref'),
-			date: ColumnDate('Date'),
-			client: ColumnRef('Client', aClients, c => c.name),
-			jobs: ColumnText('Jobs'),
-			payments: ColumnText('Payments'),
-			balance: ColumnText('Balance'),
-			_send: ColumnButton('Send', (_, row) => {
-				const client = getItemById(aClients, row.client)
-				if (client) { watsapp(client.phone, `Hello ${client.name},\nThis is a test invoice ${row.id} for client ${row.client}.`) }
-			}, () => 'Send'),
-		}} newRow={() => ({ id: newId(), date: today(), client: 0, jobs: [], payments: [], balance: 0 })} rows={stInvoices} inlineHeadersEdit={true} />
-	</>)
+function Settings({ txt, refPre, refNext }) {
+	return (
+		<Form>
+			<Form.Group className="mb-3">
+				<Form.Label>Message Template</Form.Label>
+				<Form.Control as="textarea" rows={5} onChange={onChange(txt[1])} value={txt[0]} />
+			</Form.Group>
+			<Form.Group className="mb-3">
+				<Form.Label>Ref prefix</Form.Label>
+				<Form.Control type="text" value={refPre[0]} onChange={onChange(refPre[1])} />
+			</Form.Group>
+			<Form.Group className="mb-3">
+				<Form.Label>Ref next</Form.Label>
+				<Form.Control type="text" value={refNext[0]} onChange={onChange(refNext[1])} />
+			</Form.Group>
+		</Form>
+	)
+}
+
+Settings.propTypes = {
+	txt: PropTypes.array.isRequired,
+	refPre: PropTypes.array.isRequired,
+	refNext: PropTypes.array.isRequired,
+}
 
 Invoices.propTypes = {
 	stInvoices: PropTypes.array.isRequired,
 	aClients: PropTypes.array.isRequired,
-	newId: PropTypes.func,
+	stSettings: PropTypes.array.isRequired,
 }
 
 export default Invoices

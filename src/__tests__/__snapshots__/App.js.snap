@@ -17,9 +17,7 @@ exports[`Clients confirms & clears list 1`] = `
       </column-header>
     </table-header>
     <table-item>
-      <column-text>
-        1
-      </column-text>
+      <column-text />
       <column-text>
         clientA
       </column-text>
@@ -70,9 +68,7 @@ exports[`Clients confirms & clears list 2`] = `
       </column-header>
     </table-header>
     <table-item>
-      <column-text>
-        1
-      </column-text>
+      <column-text />
       <column-text>
         clientA
       </column-text>
@@ -153,9 +149,7 @@ exports[`Clients enters another into list 1`] = `
       </column-header>
     </table-header>
     <table-item>
-      <column-text>
-        1
-      </column-text>
+      <column-text />
       <column-text>
         clientA
       </column-text>
@@ -206,9 +200,7 @@ exports[`Clients enters another into list 2`] = `
       </column-header>
     </table-header>
     <table-item>
-      <column-text>
-        1
-      </column-text>
+      <column-text />
       <column-text>
         clientA
       </column-text>
@@ -230,7 +222,7 @@ exports[`Clients enters another into list 2`] = `
     </table-item>
     <table-item>
       <column-text>
-        2
+        3
       </column-text>
       <column-text>
         clientC
@@ -283,7 +275,7 @@ exports[`Clients enters into list 1`] = `
     </table-header>
     <table-item>
       <column-text>
-        1
+        2
       </column-text>
       <column-text>
         clientB
@@ -355,22 +347,19 @@ exports[`Invoices renders page 1`] = `
   <table-table>
     <table-header>
       <column-header>
-        Ref
+        InvoiceRef
+      </column-header>
+      <column-header>
+        ClientRef
       </column-header>
       <column-header>
         Date
       </column-header>
       <column-header>
-        Client
+        Summary
       </column-header>
       <column-header>
-        Jobs
-      </column-header>
-      <column-header>
-        Payments
-      </column-header>
-      <column-header>
-        Balance
+        Total
       </column-header>
       <column-header>
         Send
@@ -390,9 +379,9 @@ exports[`Invoices renders page 1`] = `
 </div-page>
 `;
 
-exports[`Jobs renders page 1`] = `
+exports[`Receipts renders page 1`] = `
 <div-page
-  data-testid="tableJobs"
+  data-testid="tableReceipts"
 >
   <table-table>
     <table-header>
@@ -406,43 +395,7 @@ exports[`Jobs renders page 1`] = `
         Client
       </column-header>
       <column-header>
-        Desc
-      </column-header>
-      <column-header>
-        Money
-      </column-header>
-    </table-header>
-  </table-table>
-  <button
-    data-testid="buttonAdd"
-  >
-    Add
-  </button>
-  <button
-    data-testid="buttonClear"
-  >
-    Clear
-  </button>
-</div-page>
-`;
-
-exports[`Payments renders page 1`] = `
-<div-page
-  data-testid="tablePayments"
->
-  <table-table>
-    <table-header>
-      <column-header>
-        Ref
-      </column-header>
-      <column-header>
-        Date
-      </column-header>
-      <column-header>
-        Client
-      </column-header>
-      <column-header>
-        Money
+        Total
       </column-header>
     </table-header>
   </table-table>
@@ -493,54 +446,6 @@ exports[`Settings renders page 1`] = `
         style="display: block;"
       >
         <column-header>
-          Job Prefix
-        </column-header>
-        <div>
-          <column-text>
-            J
-          </column-text>
-        </div>
-      </table-row>
-      <table-row
-        style="display: block;"
-      >
-        <column-header>
-          Job Next
-        </column-header>
-        <div>
-          <column-text>
-            1
-          </column-text>
-        </div>
-      </table-row>
-      <table-row
-        style="display: block;"
-      >
-        <column-header>
-          Payment Prefix
-        </column-header>
-        <div>
-          <column-text>
-            P
-          </column-text>
-        </div>
-      </table-row>
-      <table-row
-        style="display: block;"
-      >
-        <column-header>
-          Payment Next
-        </column-header>
-        <div>
-          <column-text>
-            1
-          </column-text>
-        </div>
-      </table-row>
-      <table-row
-        style="display: block;"
-      >
-        <column-header>
           Invoice Prefix
         </column-header>
         <div>
@@ -561,6 +466,30 @@ exports[`Settings renders page 1`] = `
           </column-text>
         </div>
       </table-row>
+      <table-row
+        style="display: block;"
+      >
+        <column-header>
+          Receipt Prefix
+        </column-header>
+        <div>
+          <column-text>
+            R
+          </column-text>
+        </div>
+      </table-row>
+      <table-row
+        style="display: block;"
+      >
+        <column-header>
+          Receipt Next
+        </column-header>
+        <div>
+          <column-text>
+            1
+          </column-text>
+        </div>
+      </table-row>
       <table-buttons>
         <button
           data-testid="buttonEdit1"
@@ -570,5 +499,35 @@ exports[`Settings renders page 1`] = `
       </table-buttons>
     </table-item>
   </table-table>
+</div-page>
+`;
+
+exports[`Statements renders page 1`] = `
+<div-page
+  data-testid="tableStatements"
+>
+  <table-table>
+    <table-header>
+      <column-header>
+        ClientRef
+      </column-header>
+      <column-header>
+        BalanceDue
+      </column-header>
+      <column-header>
+        Send
+      </column-header>
+    </table-header>
+  </table-table>
+  <button
+    data-testid="buttonAdd"
+  >
+    Add
+  </button>
+  <button
+    data-testid="buttonClear"
+  >
+    Clear
+  </button>
 </div-page>
 `;

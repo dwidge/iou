@@ -4,47 +4,71 @@ exports[`Clients confirms & clears list 1`] = `
 <div-page
   data-testid="tableClients"
 >
-  <table-table>
-    <table-header>
-      <column-header>
-        Ref
-      </column-header>
-      <column-header>
-        Name
-      </column-header>
-      <column-header>
-        Phone
-      </column-header>
-    </table-header>
-    <table-item>
-      <column-text />
-      <column-text>
-        clientA
-      </column-text>
-      <column-text>
-        1235551234
-      </column-text>
-      <table-buttons>
-        <button
-          data-testid="buttonEdit1"
-        >
-          Edit
-        </button>
-        <button
-          data-testid="buttonDel1"
-        >
-          Del
-        </button>
-      </table-buttons>
-    </table-item>
-  </table-table>
+  <div
+    class="table-responsive"
+  >
+    <table
+      class="table table-striped table-bordered table-hover"
+    >
+      <thead>
+        <tr>
+          <th>
+            Ref
+          </th>
+          <th>
+            Name
+          </th>
+          <th>
+            Phone
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <column-text />
+          </td>
+          <td>
+            <column-text>
+              clientA
+            </column-text>
+          </td>
+          <td>
+            <column-text>
+              1235551234
+            </column-text>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonEdit1"
+              type="button"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonDel1"
+              type="button"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <button
+    class="btn btn-primary"
     data-testid="buttonAdd"
+    type="button"
   >
     Add
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonClear"
+    type="button"
   >
     Clear
   </button>
@@ -55,47 +79,71 @@ exports[`Clients confirms & clears list 2`] = `
 <div-page
   data-testid="tableClients"
 >
-  <table-table>
-    <table-header>
-      <column-header>
-        Ref
-      </column-header>
-      <column-header>
-        Name
-      </column-header>
-      <column-header>
-        Phone
-      </column-header>
-    </table-header>
-    <table-item>
-      <column-text />
-      <column-text>
-        clientA
-      </column-text>
-      <column-text>
-        1235551234
-      </column-text>
-      <table-buttons>
-        <button
-          data-testid="buttonEdit1"
-        >
-          Edit
-        </button>
-        <button
-          data-testid="buttonDel1"
-        >
-          Del
-        </button>
-      </table-buttons>
-    </table-item>
-  </table-table>
+  <div
+    class="table-responsive"
+  >
+    <table
+      class="table table-striped table-bordered table-hover"
+    >
+      <thead>
+        <tr>
+          <th>
+            Ref
+          </th>
+          <th>
+            Name
+          </th>
+          <th>
+            Phone
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <column-text />
+          </td>
+          <td>
+            <column-text>
+              clientA
+            </column-text>
+          </td>
+          <td>
+            <column-text>
+              1235551234
+            </column-text>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonEdit1"
+              type="button"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonDel1"
+              type="button"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <button
+    class="btn btn-primary"
     data-testid="buttonAdd"
+    type="button"
   >
     Add
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonClear"
+    type="button"
   >
     Confirm
   </button>
@@ -106,26 +154,39 @@ exports[`Clients confirms & clears list 3`] = `
 <div-page
   data-testid="tableClients"
 >
-  <table-table>
-    <table-header>
-      <column-header>
-        Ref
-      </column-header>
-      <column-header>
-        Name
-      </column-header>
-      <column-header>
-        Phone
-      </column-header>
-    </table-header>
-  </table-table>
+  <div
+    class="table-responsive"
+  >
+    <table
+      class="table table-striped table-bordered table-hover"
+    >
+      <thead>
+        <tr>
+          <th>
+            Ref
+          </th>
+          <th>
+            Name
+          </th>
+          <th>
+            Phone
+          </th>
+        </tr>
+      </thead>
+      <tbody />
+    </table>
+  </div>
   <button
+    class="btn btn-primary"
     data-testid="buttonAdd"
+    type="button"
   >
     Add
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonClear"
+    type="button"
   >
     Clear
   </button>
@@ -136,47 +197,71 @@ exports[`Clients enters another into list 1`] = `
 <div-page
   data-testid="tableClients"
 >
-  <table-table>
-    <table-header>
-      <column-header>
-        Ref
-      </column-header>
-      <column-header>
-        Name
-      </column-header>
-      <column-header>
-        Phone
-      </column-header>
-    </table-header>
-    <table-item>
-      <column-text />
-      <column-text>
-        clientA
-      </column-text>
-      <column-text>
-        1235551234
-      </column-text>
-      <table-buttons>
-        <button
-          data-testid="buttonEdit1"
-        >
-          Edit
-        </button>
-        <button
-          data-testid="buttonDel1"
-        >
-          Del
-        </button>
-      </table-buttons>
-    </table-item>
-  </table-table>
+  <div
+    class="table-responsive"
+  >
+    <table
+      class="table table-striped table-bordered table-hover"
+    >
+      <thead>
+        <tr>
+          <th>
+            Ref
+          </th>
+          <th>
+            Name
+          </th>
+          <th>
+            Phone
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <column-text />
+          </td>
+          <td>
+            <column-text>
+              clientA
+            </column-text>
+          </td>
+          <td>
+            <column-text>
+              1235551234
+            </column-text>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonEdit1"
+              type="button"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonDel1"
+              type="button"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <button
+    class="btn btn-primary"
     data-testid="buttonAdd"
+    type="button"
   >
     Add
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonClear"
+    type="button"
   >
     Clear
   </button>
@@ -187,70 +272,104 @@ exports[`Clients enters another into list 2`] = `
 <div-page
   data-testid="tableClients"
 >
-  <table-table>
-    <table-header>
-      <column-header>
-        Ref
-      </column-header>
-      <column-header>
-        Name
-      </column-header>
-      <column-header>
-        Phone
-      </column-header>
-    </table-header>
-    <table-item>
-      <column-text />
-      <column-text>
-        clientA
-      </column-text>
-      <column-text>
-        1235551234
-      </column-text>
-      <table-buttons>
-        <button
-          data-testid="buttonEdit1"
-        >
-          Edit
-        </button>
-        <button
-          data-testid="buttonDel1"
-        >
-          Del
-        </button>
-      </table-buttons>
-    </table-item>
-    <table-item>
-      <column-text>
-        3
-      </column-text>
-      <column-text>
-        clientC
-      </column-text>
-      <column-text>
-        0005551113
-      </column-text>
-      <table-buttons>
-        <button
-          data-testid="buttonEdit2"
-        >
-          Edit
-        </button>
-        <button
-          data-testid="buttonDel2"
-        >
-          Del
-        </button>
-      </table-buttons>
-    </table-item>
-  </table-table>
+  <div
+    class="table-responsive"
+  >
+    <table
+      class="table table-striped table-bordered table-hover"
+    >
+      <thead>
+        <tr>
+          <th>
+            Ref
+          </th>
+          <th>
+            Name
+          </th>
+          <th>
+            Phone
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <column-text />
+          </td>
+          <td>
+            <column-text>
+              clientA
+            </column-text>
+          </td>
+          <td>
+            <column-text>
+              1235551234
+            </column-text>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonEdit1"
+              type="button"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonDel1"
+              type="button"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <column-text>
+              3
+            </column-text>
+          </td>
+          <td>
+            <column-text>
+              clientC
+            </column-text>
+          </td>
+          <td>
+            <column-text>
+              0005551113
+            </column-text>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonEdit2"
+              type="button"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonDel2"
+              type="button"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <button
+    class="btn btn-primary"
     data-testid="buttonAdd"
+    type="button"
   >
     Add
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonClear"
+    type="button"
   >
     Clear
   </button>
@@ -261,49 +380,73 @@ exports[`Clients enters into list 1`] = `
 <div-page
   data-testid="tableClients"
 >
-  <table-table>
-    <table-header>
-      <column-header>
-        Ref
-      </column-header>
-      <column-header>
-        Name
-      </column-header>
-      <column-header>
-        Phone
-      </column-header>
-    </table-header>
-    <table-item>
-      <column-text>
-        2
-      </column-text>
-      <column-text>
-        clientB
-      </column-text>
-      <column-text>
-        0005551112
-      </column-text>
-      <table-buttons>
-        <button
-          data-testid="buttonEdit1"
-        >
-          Edit
-        </button>
-        <button
-          data-testid="buttonDel1"
-        >
-          Del
-        </button>
-      </table-buttons>
-    </table-item>
-  </table-table>
+  <div
+    class="table-responsive"
+  >
+    <table
+      class="table table-striped table-bordered table-hover"
+    >
+      <thead>
+        <tr>
+          <th>
+            Ref
+          </th>
+          <th>
+            Name
+          </th>
+          <th>
+            Phone
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <column-text>
+              2
+            </column-text>
+          </td>
+          <td>
+            <column-text>
+              clientB
+            </column-text>
+          </td>
+          <td>
+            <column-text>
+              0005551112
+            </column-text>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonEdit1"
+              type="button"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonDel1"
+              type="button"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <button
+    class="btn btn-primary"
     data-testid="buttonAdd"
+    type="button"
   >
     Add
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonClear"
+    type="button"
   >
     Clear
   </button>
@@ -314,26 +457,39 @@ exports[`Clients renders page 1`] = `
 <div-page
   data-testid="tableClients"
 >
-  <table-table>
-    <table-header>
-      <column-header>
-        Ref
-      </column-header>
-      <column-header>
-        Name
-      </column-header>
-      <column-header>
-        Phone
-      </column-header>
-    </table-header>
-  </table-table>
+  <div
+    class="table-responsive"
+  >
+    <table
+      class="table table-striped table-bordered table-hover"
+    >
+      <thead>
+        <tr>
+          <th>
+            Ref
+          </th>
+          <th>
+            Name
+          </th>
+          <th>
+            Phone
+          </th>
+        </tr>
+      </thead>
+      <tbody />
+    </table>
+  </div>
   <button
+    class="btn btn-primary"
     data-testid="buttonAdd"
+    type="button"
   >
     Add
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonClear"
+    type="button"
   >
     Clear
   </button>
@@ -344,35 +500,48 @@ exports[`Invoices renders page 1`] = `
 <div-page
   data-testid="tableInvoices"
 >
-  <table-table>
-    <table-header>
-      <column-header>
-        InvoiceRef
-      </column-header>
-      <column-header>
-        ClientRef
-      </column-header>
-      <column-header>
-        Date
-      </column-header>
-      <column-header>
-        Summary
-      </column-header>
-      <column-header>
-        Total
-      </column-header>
-      <column-header>
-        Send
-      </column-header>
-    </table-header>
-  </table-table>
+  <div
+    class="table-responsive"
+  >
+    <table
+      class="table table-striped table-bordered table-hover"
+    >
+      <thead>
+        <tr>
+          <th>
+            InvoiceRef
+          </th>
+          <th>
+            ClientRef
+          </th>
+          <th>
+            Date
+          </th>
+          <th>
+            Summary
+          </th>
+          <th>
+            Total
+          </th>
+          <th>
+            Send
+          </th>
+        </tr>
+      </thead>
+      <tbody />
+    </table>
+  </div>
   <button
+    class="btn btn-primary"
     data-testid="buttonAdd"
+    type="button"
   >
     Add
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonClear"
+    type="button"
   >
     Clear
   </button>
@@ -383,29 +552,42 @@ exports[`Receipts renders page 1`] = `
 <div-page
   data-testid="tableReceipts"
 >
-  <table-table>
-    <table-header>
-      <column-header>
-        Ref
-      </column-header>
-      <column-header>
-        Date
-      </column-header>
-      <column-header>
-        Client
-      </column-header>
-      <column-header>
-        Total
-      </column-header>
-    </table-header>
-  </table-table>
+  <div
+    class="table-responsive"
+  >
+    <table
+      class="table table-striped table-bordered table-hover"
+    >
+      <thead>
+        <tr>
+          <th>
+            Ref
+          </th>
+          <th>
+            Date
+          </th>
+          <th>
+            Client
+          </th>
+          <th>
+            Total
+          </th>
+        </tr>
+      </thead>
+      <tbody />
+    </table>
+  </div>
   <button
+    class="btn btn-primary"
     data-testid="buttonAdd"
+    type="button"
   >
     Add
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonClear"
+    type="button"
   >
     Clear
   </button>
@@ -416,89 +598,111 @@ exports[`Settings renders page 1`] = `
 <div-page
   data-testid="tableSettings"
 >
-  <table-table>
-    <table-item>
-      <table-row
-        style="display: block;"
-      >
-        <column-header>
-          Client Prefix
-        </column-header>
-        <div>
-          <column-text>
-            C
-          </column-text>
-        </div>
-      </table-row>
-      <table-row
-        style="display: block;"
-      >
-        <column-header>
-          Client Next
-        </column-header>
-        <div>
-          <column-text>
-            1
-          </column-text>
-        </div>
-      </table-row>
-      <table-row
-        style="display: block;"
-      >
-        <column-header>
-          Invoice Prefix
-        </column-header>
-        <div>
-          <column-text>
-            I
-          </column-text>
-        </div>
-      </table-row>
-      <table-row
-        style="display: block;"
-      >
-        <column-header>
-          Invoice Next
-        </column-header>
-        <div>
-          <column-text>
-            1
-          </column-text>
-        </div>
-      </table-row>
-      <table-row
-        style="display: block;"
-      >
-        <column-header>
-          Receipt Prefix
-        </column-header>
-        <div>
-          <column-text>
-            R
-          </column-text>
-        </div>
-      </table-row>
-      <table-row
-        style="display: block;"
-      >
-        <column-header>
-          Receipt Next
-        </column-header>
-        <div>
-          <column-text>
-            1
-          </column-text>
-        </div>
-      </table-row>
-      <table-buttons>
-        <button
-          data-testid="buttonEdit1"
-        >
-          Edit
-        </button>
-      </table-buttons>
-    </table-item>
-  </table-table>
+  <div
+    class="table-responsive"
+  >
+    <table
+      class="table table-striped table-bordered table-hover"
+    >
+      <tbody>
+        <tr>
+          <td>
+            <div>
+              <div>
+                <b>
+                  Client Prefix
+                </b>
+              </div>
+              <div>
+                <column-text>
+                  C
+                </column-text>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>
+                <b>
+                  Client Next
+                </b>
+              </div>
+              <div>
+                <column-text>
+                  1
+                </column-text>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>
+                <b>
+                  Invoice Prefix
+                </b>
+              </div>
+              <div>
+                <column-text>
+                  I
+                </column-text>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>
+                <b>
+                  Invoice Next
+                </b>
+              </div>
+              <div>
+                <column-text>
+                  1
+                </column-text>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>
+                <b>
+                  Receipt Prefix
+                </b>
+              </div>
+              <div>
+                <column-text>
+                  R
+                </column-text>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div>
+              <div>
+                <b>
+                  Receipt Next
+                </b>
+              </div>
+              <div>
+                <column-text>
+                  1
+                </column-text>
+              </div>
+            </div>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonEdit1"
+              type="button"
+            >
+              Edit
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div-page>
 `;
 
@@ -506,28 +710,27 @@ exports[`Statements renders page 1`] = `
 <div-page
   data-testid="tableStatements"
 >
-  <table-table>
-    <table-header>
-      <column-header>
-        ClientRef
-      </column-header>
-      <column-header>
-        BalanceDue
-      </column-header>
-      <column-header>
-        Send
-      </column-header>
-    </table-header>
-  </table-table>
-  <button
-    data-testid="buttonAdd"
+  <div
+    class="table-responsive"
   >
-    Add
-  </button>
-  <button
-    data-testid="buttonClear"
-  >
-    Clear
-  </button>
+    <table
+      class="table table-striped table-bordered table-hover"
+    >
+      <thead>
+        <tr>
+          <th>
+            ClientRef
+          </th>
+          <th>
+            BalanceDue
+          </th>
+          <th>
+            Send
+          </th>
+        </tr>
+      </thead>
+      <tbody />
+    </table>
+  </div>
 </div-page>
 `;

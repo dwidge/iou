@@ -9,7 +9,7 @@ const Receipts = ({ stReceipts, aClients, stSettings }) =>
 		<Table name='Receipts' schema={{
 			ref: ColumnText('Ref'),
 			date: ColumnDate('Date'),
-			client: ColumnRef('Client', aClients, c => c.name, 'ref'),
+			client: ColumnRef('Client', { all: aClients, colRef: 'ref', colView: 'name' }),
 			total: ColumnText('Total'),
 		}} newRow={() => ({ id: uuid(), ref: newRef(stSettings)('recpre', 'recnext')(), date: today(), client: '', total: 0 })} rows={stReceipts} />
 	</>)

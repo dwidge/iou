@@ -24,7 +24,7 @@ const fields = (row, client) => ({
 	'[invoiceref]': row.ref,
 	'[date]': row.date,
 	'[summary]': row.summary,
-	'[total]': row.total.toFixed(2),
+	'[total]': (+row.total).toFixed(2),
 })
 
 const Invoices = ({ stInvoices, aClients, stSettings }) => {
@@ -34,7 +34,7 @@ const Invoices = ({ stInvoices, aClients, stSettings }) => {
 	return (<>
 		<Table name='Invoices' schema={{
 			ref: ColumnText('InvoiceRef'),
-			client: ColumnRef('ClientRef', aClients, c => c.name, 'ref'),
+			client: ColumnRef('ClientRef', { all: aClients, colRef: 'ref', colView: 'name' }),
 			date: ColumnDate('Date'),
 			summary: ColumnText('Summary'),
 			total: ColumnText('Total'),

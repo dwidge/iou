@@ -51,7 +51,7 @@ const PagesContent = ({ pagesArray }) => (
 Pages.propTypes = {
 	brand: PropTypes.string.isRequired,
 	pages: PropTypes.object,
-	pagesArray: PropTypes.array.isRequired,
+	pagesArray: PropTypes.array,
 }
 PagesNav.propTypes = {
 	brand: PropTypes.string.isRequired,

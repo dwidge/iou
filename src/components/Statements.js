@@ -21,7 +21,7 @@ const fields = (row, client) => ({
 	'[clientname]': client.name,
 	'[clientref]': client.ref,
 	'[date]': today(),
-	'[balance]': row.balance,
+	'[balance]': (+row.balance).toFixed(2),
 })
 
 const Statements = ({ aClients, aInvoices, aReceipts, stSettings }) => {
@@ -45,10 +45,10 @@ const Statements = ({ aClients, aInvoices, aReceipts, stSettings }) => {
 
 	return (<>
 		<Table name='Statements' schema={{
-			client: ColumnRef('ClientRef', aClients, c => c.name, 'ref'),
+			client: ColumnRef('ClientRef', { all: aClients, colRef: 'ref', colView: 'name' }),
 			balance: ColumnText('BalanceDue'),
 			_send: ColumnButton('Send', (_, row, client = getItemBy(aClients, row.client, 'ref')) => sendClient(client, txt, fields(row, client)), () => 'Send'),
-		}} rows={[statements, () => {}]} newRow={() => {}} />
+		}} rows={[statements, () => {}]} newRow={() => {}} addDel={false} />
 		<Settings txt={[txt, txtStatement => setsettings({ ...settings, txtStatement })]} />
 	</>)
 }

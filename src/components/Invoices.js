@@ -6,6 +6,7 @@ import { sendClient, newRef } from './lib'
 import { onChange } from '@dwidge/lib-react'
 
 import Form from 'react-bootstrap/Form'
+import TextArea from './TextArea'
 
 const txtDefault = `
 Hello [clientname],
@@ -17,7 +18,7 @@ InvoiceRef: [invoiceref]
 Date: [date]
 Summary: [summary]
 Total: R [total]
-`
+`.trim()
 const fields = (row, client) => ({
 	'[clientname]': client.name,
 	'[clientref]': client.ref,
@@ -49,11 +50,8 @@ const Invoices = ({ stInvoices, aClients, stSettings }) => {
 
 function Settings({ txt, refPre, refNext }) {
 	return (
-		<Form>
-			<Form.Group className="mb-3">
-				<Form.Label>Message Template</Form.Label>
-				<Form.Control as="textarea" rows={5} onChange={onChange(txt[1])} value={txt[0]} />
-			</Form.Group>
+		<Form className="mt-3">
+			<TextArea label='Message Template' txt={txt} />
 			<Form.Group className="mb-3">
 				<Form.Label>Ref prefix</Form.Label>
 				<Form.Control type="text" value={refPre[0]} onChange={onChange(refPre[1])} />

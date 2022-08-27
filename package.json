@@ -8,6 +8,7 @@
 		"@dwidge/lib": "github:dwidge/lib",
 		"@dwidge/lib-react": "github:dwidge/lib-react",
 		"@dwidge/table-react": "github:dwidge/table-react",
+		"bootstrap": "^5.2.0",
 		"date-fns": "^2.28.0",
 		"prop-types": "^15.8.1",
 		"react": "^18.2.0",
@@ -15,7 +16,8 @@
 		"react-dom": "^18.2.0",
 		"react-router-dom": "^6.3.0",
 		"react-scripts": "5.0.1",
-		"web-vitals": "^2.1.4"
+		"web-vitals": "^2.1.4",
+		"wildcard-match": "^5.1.2"
 	},
 	"devDependencies": {
 		"@testing-library/jest-dom": "^5.16.4",
@@ -29,7 +31,8 @@
 		"eslint-plugin-n": "^15.0.0",
 		"eslint-plugin-promise": "^6.0.0",
 		"eslint-plugin-react": "^7.30.0",
-		"jest-environment-jsdom": "^27.5.1"
+		"jest-environment-jsdom": "^27.5.1",
+		"jest-preview": "^0.3.0"
 	},
 	"scripts": {
 		"start": "cross-env DISABLE_ESLINT_PLUGIN=true react-scripts start",
@@ -37,6 +40,7 @@
 		"test": "react-scripts test --env=jsdom",
 		"eject": "react-scripts eject",
 		"lint": "eslint . --ext .js,.json,.*rc",
+		"preview": "jest-preview",
 		"commit": "npm run lint -- --fix && npm run test -- --watchAll=false && npm run build && git add . && git commit -m",
 		"push": "npm version patch && git push --follow-tags"
 	},

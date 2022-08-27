@@ -9,7 +9,8 @@ const Clients = ({ stClients, newId = uuid }) =>
 			ref: ColumnText('Ref'),
 			name: ColumnText('Name'),
 			phone: ColumnText('Phone'),
-		}} newRow={() => ({ id: uuid(), ref: newId(), name: 'client', phone: '555' })} rows={stClients} />
+			patterns: ColumnText('Patterns'),
+		}} newRow={() => ({ id: uuid(), ref: newId(), name: 'client', phone: '555', patterns: '' })} rows={stClients} />
 	</>)
 
 Clients.propTypes = {

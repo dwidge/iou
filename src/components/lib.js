@@ -13,7 +13,6 @@ export const newRef = ([settings, setsettings]) => (kpre, knext) => () => {
 	const pre = settings[kpre]
 	const next = settings[knext]
 	const id = pre + ('' + next).padStart(3, '0')
-	console.log(pre, next, +next + 1, knext, settings)
 	setsettings({ ...settings, [knext]: +next + 1 })
 	return id
 }

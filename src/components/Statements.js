@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Table, ColumnText, ColumnRef, ColumnButton, getItemBy } from '@dwidge/table-react'
-import { today } from '@dwidge/lib'
+import { today, uuid } from '@dwidge/lib'
 import { sendClient } from './lib'
-import { onChange } from '@dwidge/lib-react'
 
 import Form from 'react-bootstrap/Form'
+import TextArea from './TextArea'
 
 const txtDefault = `
 Hello [clientname],
@@ -15,7 +15,7 @@ This is the statement for client (ref [clientref]) on [date].
 ClientRef: [clientref]
 Date: [date]
 Balance: [balance]
-`
+`.trim()
 
 const fields = (row, client) => ({
 	'[clientname]': client.name,
@@ -35,6 +35,7 @@ const Statements = ({ aClients, aInvoices, aReceipts, stSettings }) => {
 
 	const statements = aClients.map(client =>
 		({
+			id: uuid(),
 			client: client.ref,
 			balance: calcBalance(client.ref),
 		}),
@@ -55,11 +56,8 @@ const Statements = ({ aClients, aInvoices, aReceipts, stSettings }) => {
 
 function Settings({ txt }) {
 	return (
-		<Form>
-			<Form.Group className="mb-3">
-				<Form.Label>Message Template</Form.Label>
-				<Form.Control as="textarea" rows={5} onChange={onChange(txt[1])} value={txt[0]} />
-			</Form.Group>
+		<Form className="mt-3">
+			<TextArea label='Message Template' txt={txt} />
 		</Form>
 	)
 }

@@ -17,17 +17,20 @@ const Pages = ({ brand, pages, pagesArray = Object.entries(pages) }) => (
 	</>
 )
 
+const sanitize = url =>
+	url.split(/[^-A-Za-z0-9/]/g).join('')
+
 const PagesNav = ({ brand, pagesArray }) => (
 	<Navbar bg="light" expand="lg">
 		<Container>
-			<Navbar.Brand href="#home">{brand}{useLocation().pathname}</Navbar.Brand>
+			<Navbar.Brand href="#home">{brand}{sanitize(useLocation().pathname)}</Navbar.Brand>
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
 			<Navbar.Collapse id="basic-navbar-nav">
 				<Nav variant="pills" as='ul'>
 					{pagesArray.map(([path, { name }]) =>
 						(
 							<Nav.Item as='li' key={path} >
-								<Nav.Link as={NavLink} to={path}>{name}</Nav.Link>
+								<Nav.Link as={NavLink} to={path} className="px-2" data-testid={'nav' + path}>{name}</Nav.Link>
 							</Nav.Item>))}
 				</Nav>
 			</Navbar.Collapse>
@@ -37,14 +40,14 @@ const PagesNav = ({ brand, pagesArray }) => (
 
 const PagesContent = ({ pagesArray }) => (
 	<>
-		<div className="page">
+		<Container className="p-3">
 			<Routes>
 				{pagesArray.map(([path, { element }]) =>
-					(<Route key={path} path={path} element={element}/>),
+					(<Route key={path} path={path} element={(<div data-testid={'route' + path}>{element}</div>)} />),
 				)}
 				<Route path='/' />
 			</Routes>
-		</div>
+		</Container>
 	</>
 )
 

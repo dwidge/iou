@@ -6,30 +6,22 @@ import {
 } from 'react-router-dom'
 
 import * as J from '@dwidge/lib-react'
-import * as Lib from '@dwidge/lib'
 
 import App from '../App'
 import Clients from '../components/Clients'
-
 const text = J.tools(userEvent, screen, jest).text
 const clear = J.clear(userEvent, screen)
 const type = J.type(userEvent, screen)
 const click = J.click(userEvent, screen)
-const serialSpy = J.serialSpy(jest)
 const input = async (id, text) => {
 	await clear(id)
 	await type(id, text)
 }
 
-jest.mock('@dwidge/lib', () => {
-	return {
-		__esModule: true,
-		...jest.requireActual('@dwidge/lib'),
-	}
-})
-beforeEach(async () => {
-	serialSpy(Lib, 'uuid', [1, 2, 3])
-})
+jest.mock('@dwidge/lib', () => ({
+	...jest.requireActual('@dwidge/lib'),
+	uuid: ((value = 10) => () => String(++value))(),
+}))
 afterEach(() => {
 	jest.restoreAllMocks()
 })
@@ -59,7 +51,6 @@ describe('Clients', () => {
 		const Page = () => (<Clients stClients={useState([client1])}/>)
 		render(<Page/>)
 		expect(screen.getByTestId('tableClients')).toMatchSnapshot()
-		Lib.uuid()
 		click('buttonAdd')
 		await input('inputName', 'clientC')
 		await input('inputPhone', '0005551113')

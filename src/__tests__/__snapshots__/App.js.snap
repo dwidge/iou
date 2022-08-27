@@ -21,6 +21,9 @@ exports[`Clients confirms & clears list 1`] = `
           <th>
             Phone
           </th>
+          <th>
+            Patterns
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -37,6 +40,9 @@ exports[`Clients confirms & clears list 1`] = `
             <column-text>
               1235551234
             </column-text>
+          </td>
+          <td>
+            <column-text />
           </td>
           <td>
             <button
@@ -96,6 +102,9 @@ exports[`Clients confirms & clears list 2`] = `
           <th>
             Phone
           </th>
+          <th>
+            Patterns
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -112,6 +121,9 @@ exports[`Clients confirms & clears list 2`] = `
             <column-text>
               1235551234
             </column-text>
+          </td>
+          <td>
+            <column-text />
           </td>
           <td>
             <button
@@ -171,6 +183,9 @@ exports[`Clients confirms & clears list 3`] = `
           <th>
             Phone
           </th>
+          <th>
+            Patterns
+          </th>
         </tr>
       </thead>
       <tbody />
@@ -214,6 +229,9 @@ exports[`Clients enters another into list 1`] = `
           <th>
             Phone
           </th>
+          <th>
+            Patterns
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -230,6 +248,9 @@ exports[`Clients enters another into list 1`] = `
             <column-text>
               1235551234
             </column-text>
+          </td>
+          <td>
+            <column-text />
           </td>
           <td>
             <button
@@ -289,6 +310,9 @@ exports[`Clients enters another into list 2`] = `
           <th>
             Phone
           </th>
+          <th>
+            Patterns
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -305,6 +329,9 @@ exports[`Clients enters another into list 2`] = `
             <column-text>
               1235551234
             </column-text>
+          </td>
+          <td>
+            <column-text />
           </td>
           <td>
             <button
@@ -326,7 +353,7 @@ exports[`Clients enters another into list 2`] = `
         <tr>
           <td>
             <column-text>
-              3
+              14
             </column-text>
           </td>
           <td>
@@ -340,16 +367,19 @@ exports[`Clients enters another into list 2`] = `
             </column-text>
           </td>
           <td>
+            <column-text />
+          </td>
+          <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonEdit2"
+              data-testid="buttonEdit13"
               type="button"
             >
               Edit
             </button>
             <button
               class="btn btn-primary"
-              data-testid="buttonDel2"
+              data-testid="buttonDel13"
               type="button"
             >
               Del
@@ -397,13 +427,16 @@ exports[`Clients enters into list 1`] = `
           <th>
             Phone
           </th>
+          <th>
+            Patterns
+          </th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>
             <column-text>
-              2
+              12
             </column-text>
           </td>
           <td>
@@ -417,16 +450,19 @@ exports[`Clients enters into list 1`] = `
             </column-text>
           </td>
           <td>
+            <column-text />
+          </td>
+          <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonEdit1"
+              data-testid="buttonEdit11"
               type="button"
             >
               Edit
             </button>
             <button
               class="btn btn-primary"
-              data-testid="buttonDel1"
+              data-testid="buttonDel11"
               type="button"
             >
               Del
@@ -473,6 +509,9 @@ exports[`Clients renders page 1`] = `
           </th>
           <th>
             Phone
+          </th>
+          <th>
+            Patterns
           </th>
         </tr>
       </thead>

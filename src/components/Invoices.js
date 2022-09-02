@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Table, ColumnText, ColumnDate, ColumnRef, ColumnButton, getItemBy } from '@dwidge/table-react'
 import { today, uuid } from '@dwidge/lib'
-import { sendClient, newRef } from './lib'
+import { sendWatsapp, replaceKV, newRef } from './lib'
 import { onChange } from '@dwidge/lib-react'
 
 import Form from 'react-bootstrap/Form'
@@ -41,7 +41,7 @@ const Invoices = ({ stInvoices, aClients, stSettings }) => {
 			total: ColumnText('Total'),
 			_send: ColumnButton('Send', (_, row) => {
 				const client = getItemBy(aClients, row.client, 'ref')
-				sendClient(client, txt, fields(row, client))
+				sendWatsapp(client?.phone, replaceKV(txt)(fields(row, client)))
 			}, () => 'Send'),
 		}} newRow={() => ({ id: uuid(), ref: newRef(stSettings)('invpre', 'invnext')(), client: '', date: today(), summary: '', total: 0 })} rows={stInvoices} inlineHeadersEdit={true} />
 		<Settings txt={[txt, txtInvoice => setsettings({ ...settings, txtInvoice })]} refPre={[settings.invpre, invpre => setsettings({ ...settings, invpre })]} refNext={[settings.invnext, invnext => setsettings({ ...settings, invnext })]} />

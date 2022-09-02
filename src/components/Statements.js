@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Table, ColumnText, ColumnRef, ColumnButton, getItemBy } from '@dwidge/table-react'
 import { today, uuid } from '@dwidge/lib'
-import { sendClient } from './lib'
+import { sendWatsapp, replaceKV } from './lib'
 
 import Form from 'react-bootstrap/Form'
 import TextArea from './TextArea'
@@ -48,7 +48,7 @@ const Statements = ({ aClients, aInvoices, aReceipts, stSettings }) => {
 		<Table name='Statements' schema={{
 			client: ColumnRef('ClientRef', { all: aClients, colRef: 'ref', colView: 'name' }),
 			balance: ColumnText('BalanceDue'),
-			_send: ColumnButton('Send', (_, row, client = getItemBy(aClients, row.client, 'ref')) => sendClient(client, txt, fields(row, client)), () => 'Send'),
+			_send: ColumnButton('Send', (_, row, client = getItemBy(aClients, row.client, 'ref')) => sendWatsapp(client?.phone, replaceKV(txt)(fields(row, client))), () => 'Send'),
 		}} rows={[statements, () => {}]} newRow={() => {}} addDel={false} />
 		<Settings txt={[txt, txtStatement => setsettings({ ...settings, txtStatement })]} />
 	</>)

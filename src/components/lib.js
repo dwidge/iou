@@ -1,10 +1,15 @@
-export const sendWatsapp = (num, text) => {
-	if (!num) alert('Couldn\'t send, needs number')
-	else { window.open(`https://wa.me/${encodeURIComponent(num.split(' ').join(''))}?text=${encodeURIComponent(text)}`, '_blank') }
+export const sendWatsapp = (num, text, localdialcode = '+27') => {
+	if (!num) return alert('Couldn\'t send, needs number')
+	if (num[0] !== '+') num = localdialcode + num.slice(1)
+	num = num.split(' ').join('')
+
+	window.open(`https://wa.me/${encodeURIComponent(num)}?text=${encodeURIComponent(text)}`, '_blank')
+
+// https://api.whatsapp.com/send/?phone=${encodeURIComponent(num)}&text=${encodeURIComponent(text)}&type=phone_number&app_absent=0
 }
 
-export const sendClient = (client, txt, fields = {}) =>
-	client && sendWatsapp(client.phone, replaceAll(txt)(Object.entries(fields)).trim())
+export const replaceKV = txt => (keyvalues = {}) =>
+	replaceAll(txt)(Object.entries(keyvalues)).trim()
 
 export const replaceAll = txt => subs =>
 	subs.reduce((txt, [a, b]) => txt.split(a).join(b), txt)

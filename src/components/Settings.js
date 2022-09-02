@@ -11,7 +11,7 @@ const Settings = ({ stSettings }) =>
 			invnext: ColumnText('Invoice Next'),
 			recpre: ColumnText('Receipt Prefix'),
 			recnext: ColumnText('Receipt Next'),
-		}} defaults={{}} rows={[[stSettings[0]], ([o]) => stSettings[1](o)]} pageLength={1} inlineHeaders={true} addDel={false} newRow={() => {}} />
+		}} defaults={{}} rows={[[stSettings[0]], ([o]) => stSettings[1](o)]} pageLength={1} inlineHeaders={true} inlineHeadersEdit={true} addDel={false} newRow={() => {}} />
 	</>)
 
 Settings.propTypes = {

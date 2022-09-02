@@ -9,10 +9,15 @@ export const sendClient = (client, txt, fields = {}) =>
 export const replaceAll = txt => subs =>
 	subs.reduce((txt, [a, b]) => txt.split(a).join(b), txt)
 
-export const newRef = ([settings, setsettings]) => (kpre, knext) => () => {
-	const pre = settings[kpre]
-	const next = settings[knext]
-	const id = pre + ('' + next).padStart(3, '0')
-	setsettings({ ...settings, [knext]: +next + 1 })
-	return id
+export const newRef = ([conf, confSet, confSetKey]) => (kpre, knext) => {
+	const pre = conf[kpre]
+	let next = (+conf[knext])
+	return () => {
+		const id = pre + ('' + (next++)).padStart(3, '0')
+		confSetKey(knext, next)
+		return id
+	}
 }
+
+export const useKeyVal = ([o, oSet], init = {}) =>
+	[{ ...init, ...o }, oSet, (k, v) => oSet(o => ({ ...o, [k]: v }))]

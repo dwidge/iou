@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import {
-	MemoryRouter,
-} from 'react-router-dom'
 
 import * as J from '@dwidge/lib-react'
 
+import React, { useState } from 'react'
+import {
+	MemoryRouter,
+} from 'react-router-dom'
 import App from '../App'
 import Clients from '../components/Clients'
+const tid = id => screen.getByTestId(id)
 const text = J.tools(userEvent, screen, jest).text
 const clear = J.clear(userEvent, screen)
 const type = J.type(userEvent, screen)
@@ -34,41 +35,41 @@ describe('Clients', () => {
 			<App />
 		</MemoryRouter>)
 
-		expect(screen.getByTestId('tableClients')).toMatchSnapshot()
+		expect(tid('tableClients')).toMatchSnapshot()
 	})
 
 	it('enters into list', async () => {
 		const Page = () => (<Clients stClients={useState([])}/>)
 		render(<Page/>)
-		click('buttonAdd')
+		await click('buttonAdd')
 		await input('inputName', 'clientB')
 		await input('inputPhone', '0005551112')
-		click('buttonSave')
-		expect(screen.getByTestId('tableClients')).toMatchSnapshot()
+		await click('buttonSave')
+		expect(tid('tableClients')).toMatchSnapshot()
 	})
 
 	it('enters another into list', async () => {
 		const Page = () => (<Clients stClients={useState([client1])}/>)
 		render(<Page/>)
-		expect(screen.getByTestId('tableClients')).toMatchSnapshot()
-		click('buttonAdd')
+		expect(tid('tableClients')).toMatchSnapshot()
+		await click('buttonAdd')
 		await input('inputName', 'clientC')
 		await input('inputPhone', '0005551113')
-		click('buttonSave')
-		expect(screen.getByTestId('tableClients')).toMatchSnapshot()
+		await click('buttonSave')
+		expect(tid('tableClients')).toMatchSnapshot()
 	})
 
 	it('confirms & clears list', async () => {
 		const Page = () => (<Clients stClients={useState([client1])}/>)
 		render(<Page/>)
-		expect(screen.getByTestId('tableClients')).toMatchSnapshot()
+		expect(tid('tableClients')).toMatchSnapshot()
 		expect(text('buttonClear')).toEqual('Clear')
-		click('buttonClear')
+		await click('buttonClear')
 		expect(text('buttonClear')).toEqual('Confirm')
-		expect(screen.getByTestId('tableClients')).toMatchSnapshot()
-		click('buttonClear')
+		expect(tid('tableClients')).toMatchSnapshot()
+		await click('buttonClear')
 		expect(text('buttonClear')).toEqual('Clear')
-		expect(screen.getByTestId('tableClients')).toMatchSnapshot()
+		expect(tid('tableClients')).toMatchSnapshot()
 	})
 })
 
@@ -78,7 +79,7 @@ describe('Invoices', () => {
 			<App />
 		</MemoryRouter>)
 
-		expect(screen.getByTestId('tableInvoices')).toMatchSnapshot()
+		expect(tid('tableInvoices')).toMatchSnapshot()
 	})
 })
 
@@ -88,7 +89,7 @@ describe('Receipts', () => {
 			<App />
 		</MemoryRouter>)
 
-		expect(screen.getByTestId('tableReceipts')).toMatchSnapshot()
+		expect(tid('tableReceipts')).toMatchSnapshot()
 	})
 })
 
@@ -98,7 +99,7 @@ describe('Statements', () => {
 			<App />
 		</MemoryRouter>)
 
-		expect(screen.getByTestId('tableStatements')).toMatchSnapshot()
+		expect(tid('tableStatements')).toMatchSnapshot()
 	})
 })
 
@@ -108,6 +109,6 @@ describe('Settings', () => {
 			<App />
 		</MemoryRouter>)
 
-		expect(screen.getByTestId('tableSettings')).toMatchSnapshot()
+		expect(tid('tableSettings')).toMatchSnapshot()
 	})
 })

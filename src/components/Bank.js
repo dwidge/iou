@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { Table, ColumnText, ColumnRef, getItemBy } from '@dwidge/table-react'
+import { Table, ColumnText, ColumnRef, ColumnButton, getItemBy } from '@dwidge/table-react'
 import { today, uuid, unique, replaceItemById } from '@dwidge/lib'
 import { newRef } from './lib'
 import wcmatch from 'wildcard-match'
@@ -24,7 +24,7 @@ const parseReg = reg => s =>
 	reg.exec(s)
 
 const findClients = (clients, s) =>
-	clients.filter(stringMatchesClient(s)).map(c => c.ref)
+	clients.filter(stringMatchesClient(s)).map(c => c.name)
 
 const stringMatchesClient = s => (client) =>
 	matcherFromClient(client)(s)
@@ -47,27 +47,19 @@ function partition(array, filter) {
 const numFromStr = str =>
 	(+str.split(',').join('')).toFixed(2)
 
-const DetectReceipts = ({ stClients: [clients, clientsSet] = [], stReceipts: [rec, setrec] = [], stSettings: [conf, confSet] = [] }) => {
+const DetectReceipts = ({ stClients: [clients, clientsSet] = [], newClientId = uuid, stReceipts: [rec, setrec] = [], stSettings: [conf,, confSetKey] = [] }) => {
 	const [msg, msgSet] = useState('')
 	const [txt, settxt] = useState('')
-	const [ignoretxt, ignoretxtSet] = [conf.txtIgnore || '', txtIgnore => confSet({ ...conf, txtIgnore })]
+	const [ignoretxt, ignoretxtSet] = [conf.txtIgnore || '', txtIgnore => confSetKey('txtIgnore', txtIgnore)]
 	const [receipts, setreceipts] = useState([])
 	const ignorelist = ignoretxt.split('\n').map(s => s.trim()).filter(s => s)
-
-	const newReceipt = ({ date = today(), client = '', total = 0 } = {}, i) => ({
-		id: uuid(),
-		ref: newRef([conf, confSet])('recpre', 'recnext')(),
-		date,
-		client,
-		total,
-	})
 
 	useEffect(() => {
 		setreceipts(txt.split('\n').filter(isReg(regTransaction)).map(parseReg(regTransaction)).map(([all, date, desc, total, star, balance]) => {
 			const match = findClients(clients, desc)
 			return ({
 				id: uuid(),
-				client: match[0],
+				clientname: match[0],
 				date,
 				desc,
 				total: numFromStr(total),
@@ -79,14 +71,33 @@ const DetectReceipts = ({ stClients: [clients, clientsSet] = [], stReceipts: [re
 		))
 	}, [txt])
 
+	const newClient = ({ name, patterns }) =>
+		({ id: uuid(), ref: newClientId(), name, phone: '+27', patterns })
+
+	const addClient = ({ clientname, pattern } = {}) => {
+		if (clientname && !getItemBy(clients, clientname, 'name')) {
+			clientsSet(clients.concat(newClient({ name: clientname, patterns: pattern })))
+		} else alert(clientname ? clientname + ' exists.' : 'Enter a name.')
+	}
+
 	const onAddAll = () => {
-		const [toAdd, toReject] = partition(receipts, ({ client }) => client)
+		const [toAdd, toReject] = partition(receipts.map(r => ({ ...r, client: getItemBy(clients, r.clientname, 'name')?.ref })), ({ clientname }) => clientname)
 		const [dupes, fresh] = partition(toAdd, findReceipt(rec))
+
+		const newReceiptRef = newRef([conf, null, confSetKey])('recpre', 'recnext')
+
+		const newReceipt = ({ date = today(), clientname = '', total = 0 } = {}, i) => ({
+			id: uuid(),
+			ref: newReceiptRef(),
+			date,
+			client: clients.find(c => c.name === clientname).ref,
+			total,
+		})
 
 		setrec(rec.concat(fresh.map(newReceipt)))
 
-		clientsSet(toAdd.reduce((clients, { client, pattern }) => {
-			const c = getItemBy(clients, client, 'ref')
+		clientsSet(toAdd.reduce((clients, { clientname, pattern }) => {
+			const c = getItemBy(clients, clientname, 'name')
 			const patterns = unique((c.patterns || '').split('\n').concat(pattern)).join('\n')
 			const newc = { ...c, patterns }
 			return replaceItemById(clients, newc)
@@ -106,14 +117,15 @@ const DetectReceipts = ({ stClients: [clients, clientsSet] = [], stReceipts: [re
 			<TextArea label='Bank statement' txt={[txt, settxt]} />
 		</Form>
 		<Table name='Statements' schema={{
-			client: ColumnRef('Client', { all: clients, colRef: 'ref', colView: 'name' }),
+			clientname: ColumnRef('Client', { all: clients, colRef: 'name', colView: 'ref', colDisplay: 'name' }),
+			create: ColumnButton('Create', (_, row) => addClient(row), (val, { clientname }) => clientname && !getItemBy(clients, clientname, 'name') ? ('Create ' + clientname) : ''),
 			date: ColumnText('Date'),
 			desc: ColumnText('Desc'),
 			total: ColumnText('In/Out'),
 			balance: ColumnText('Balance'),
 			match: ColumnText('Match'),
 			pattern: ColumnText('Pattern'),
-		}} rows={[receipts, setreceipts]} newRow={() => ({ id: uuid() })} addDel={true} />
+		}} rows={[receipts, setreceipts]} newRow={() => ({ id: uuid() })} addDel={true} inlineHeadersEdit={false} />
 		<Button data-testid='buttonAddAll' onClick={onAddAll}>Add All to Receipts</Button>
 		<p className="mt-3">Any rows with blank Client will be deleted. Discarded rows are added to ignore patterns.</p>
 		<p>Any rows already in Receipts (with same Client, Date and In/Out) are duplicates. They will not be added again.</p>
@@ -127,6 +139,7 @@ DetectReceipts.propTypes = {
 	stClients: PropTypes.array.isRequired,
 	stReceipts: PropTypes.array.isRequired,
 	stSettings: PropTypes.array.isRequired,
+	newClientId: PropTypes.func.isRequired,
 }
 
 export default DetectReceipts

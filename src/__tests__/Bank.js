@@ -1,24 +1,23 @@
-import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { render, screen, act } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import {
-	MemoryRouter,
-} from 'react-router-dom'
 // import { debug } from 'jest-preview';
 
 import * as J from '@dwidge/lib-react'
 
+import React from 'react'
+import {
+	MemoryRouter,
+} from 'react-router-dom'
 import App from '../App'
-
+const tid = id => screen.getByTestId(id)
 const clear = J.clear(userEvent, screen)
 const type = J.type(userEvent, screen)
 const click = J.click(userEvent, screen)
 const input = async (id, text) => {
 	await clear(id)
 	await type(id, text)
+	act(jest.runOnlyPendingTimers)
 }
-const snap = id =>
-	expect(screen.getByTestId(id)).toMatchSnapshot()
 
 jest.mock('@dwidge/lib', () => ({
 	...jest.requireActual('@dwidge/lib'),
@@ -27,6 +26,12 @@ jest.mock('@dwidge/lib', () => ({
 afterEach(() => {
 	jest.restoreAllMocks()
 })
+beforeAll(() => {
+	jest.useFakeTimers()
+})
+afterAll(() => {
+	jest.useRealTimers()
+})
 
 describe('Bank', () => {
 	test('renders page', () => {
@@ -34,7 +39,7 @@ describe('Bank', () => {
 			<App />
 		</MemoryRouter>)
 
-		snap('tableStatements')
+		expect(tid('tableStatements')).toMatchSnapshot()
 	})
 
 	test('detects patterns', async () => {
@@ -55,15 +60,15 @@ describe('Bank', () => {
 22/33/4444 dd 7.7 * 999.99
 11/22/3333 aa 4 bb 5.5 cc 6.66 7.77
 `)
-		snap('route/bank')
-		await click('buttonEdit146')
-		await input('inputViewClient', 'clientB')
+		expect(tid('route/bank')).toMatchSnapshot()
+		await click('buttonEdit14')
+		await input('inputClient', 'clientB')
 		await click('buttonSave')
 		await click('buttonAddAll')
-		snap('route/bank')
+		expect(tid('route/bank')).toMatchSnapshot()
 		await click('nav/receipts')
-		snap('route/receipts')
+		expect(tid('route/receipts')).toMatchSnapshot()
 		await click('nav/clients')
-		snap('route/clients')
+		expect(tid('route/clients')).toMatchSnapshot()
 	})
 })

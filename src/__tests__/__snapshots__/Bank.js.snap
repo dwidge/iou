@@ -22,6 +22,7 @@ exports[`Bank detects patterns 1`] = `
         class="form-control"
         data-testid="inputBank statement"
         rows="5"
+        type="text"
       >
         
 22/33/4444 dd 8.8 * 1,109,999.99
@@ -31,11 +32,11 @@ exports[`Bank detects patterns 1`] = `
       </textarea>
     </div>
   </form>
-  <div-page
+  <div
     data-testid="tableStatements"
   >
     <div
-      class="table-responsive"
+      style="overflow: auto; max-height: 80vh;"
     >
       <table
         class="table table-striped table-bordered table-hover"
@@ -44,6 +45,9 @@ exports[`Bank detects patterns 1`] = `
           <tr>
             <th>
               Client
+            </th>
+            <th>
+              Create
             </th>
             <th>
               Date
@@ -73,6 +77,15 @@ exports[`Bank detects patterns 1`] = `
               </column-text>
             </td>
             <td>
+              <table-buttons>
+                <button
+                  class="btn btn-primary"
+                  data-testid="buttonCreate13"
+                  type="button"
+                />
+              </table-buttons>
+            </td>
+            <td>
               <column-text>
                 22/33/4444
               </column-text>
@@ -94,7 +107,7 @@ exports[`Bank detects patterns 1`] = `
             </td>
             <td>
               <column-text>
-                C001
+                clientA
               </column-text>
             </td>
             <td>
@@ -105,14 +118,16 @@ exports[`Bank detects patterns 1`] = `
             <td>
               <button
                 class="btn btn-primary"
-                data-testid="buttonEdit146"
+                data-testid="buttonEdit13"
                 type="button"
               >
                 Edit
               </button>
+            </td>
+            <td>
               <button
                 class="btn btn-primary"
-                data-testid="buttonDel146"
+                data-testid="buttonDel13"
                 type="button"
               >
                 Del
@@ -124,6 +139,15 @@ exports[`Bank detects patterns 1`] = `
               <column-text>
                 clientA
               </column-text>
+            </td>
+            <td>
+              <table-buttons>
+                <button
+                  class="btn btn-primary"
+                  data-testid="buttonCreate14"
+                  type="button"
+                />
+              </table-buttons>
             </td>
             <td>
               <column-text>
@@ -147,7 +171,7 @@ exports[`Bank detects patterns 1`] = `
             </td>
             <td>
               <column-text>
-                C001
+                clientA
               </column-text>
             </td>
             <td>
@@ -158,14 +182,16 @@ exports[`Bank detects patterns 1`] = `
             <td>
               <button
                 class="btn btn-primary"
-                data-testid="buttonEdit147"
+                data-testid="buttonEdit14"
                 type="button"
               >
                 Edit
               </button>
+            </td>
+            <td>
               <button
                 class="btn btn-primary"
-                data-testid="buttonDel147"
+                data-testid="buttonDel14"
                 type="button"
               >
                 Del
@@ -177,6 +203,15 @@ exports[`Bank detects patterns 1`] = `
               <column-text>
                 -
               </column-text>
+            </td>
+            <td>
+              <table-buttons>
+                <button
+                  class="btn btn-primary"
+                  data-testid="buttonCreate15"
+                  type="button"
+                />
+              </table-buttons>
             </td>
             <td>
               <column-text>
@@ -209,14 +244,16 @@ exports[`Bank detects patterns 1`] = `
             <td>
               <button
                 class="btn btn-primary"
-                data-testid="buttonEdit148"
+                data-testid="buttonEdit15"
                 type="button"
               >
                 Edit
               </button>
+            </td>
+            <td>
               <button
                 class="btn btn-primary"
-                data-testid="buttonDel148"
+                data-testid="buttonDel15"
                 type="button"
               >
                 Del
@@ -240,7 +277,7 @@ exports[`Bank detects patterns 1`] = `
     >
       Clear
     </button>
-  </div-page>
+  </div>
   <button
     class="btn btn-primary"
     data-testid="buttonAddAll"
@@ -271,6 +308,7 @@ exports[`Bank detects patterns 1`] = `
         class="form-control"
         data-testid="inputIgnore patterns"
         rows="5"
+        type="text"
       />
     </div>
   </form>
@@ -305,14 +343,15 @@ exports[`Bank detects patterns 2`] = `
         class="form-control"
         data-testid="inputBank statement"
         rows="5"
+        type="text"
       />
     </div>
   </form>
-  <div-page
+  <div
     data-testid="tableStatements"
   >
     <div
-      class="table-responsive"
+      style="overflow: auto; max-height: 80vh;"
     >
       <table
         class="table table-striped table-bordered table-hover"
@@ -321,6 +360,9 @@ exports[`Bank detects patterns 2`] = `
           <tr>
             <th>
               Client
+            </th>
+            <th>
+              Create
             </th>
             <th>
               Date
@@ -359,7 +401,7 @@ exports[`Bank detects patterns 2`] = `
     >
       Clear
     </button>
-  </div-page>
+  </div>
   <button
     class="btn btn-primary"
     data-testid="buttonAddAll"
@@ -390,6 +432,7 @@ exports[`Bank detects patterns 2`] = `
         class="form-control"
         data-testid="inputIgnore patterns"
         rows="5"
+        type="text"
       >
         aa * bb *.* cc
       </textarea>
@@ -402,11 +445,11 @@ exports[`Bank detects patterns 3`] = `
 <div
   data-testid="route/receipts"
 >
-  <div-page
+  <div
     data-testid="tableReceipts"
   >
     <div
-      class="table-responsive"
+      style="overflow: auto; max-height: 80vh;"
     >
       <table
         class="table table-striped table-bordered table-hover"
@@ -441,7 +484,7 @@ exports[`Bank detects patterns 3`] = `
             </td>
             <td>
               <column-text>
-                clientB
+                clientA
               </column-text>
             </td>
             <td>
@@ -452,14 +495,16 @@ exports[`Bank detects patterns 3`] = `
             <td>
               <button
                 class="btn btn-primary"
-                data-testid="buttonEdit149"
+                data-testid="buttonEdit16"
                 type="button"
               >
                 Edit
               </button>
+            </td>
+            <td>
               <button
                 class="btn btn-primary"
-                data-testid="buttonDel149"
+                data-testid="buttonDel16"
                 type="button"
               >
                 Del
@@ -469,7 +514,7 @@ exports[`Bank detects patterns 3`] = `
           <tr>
             <td>
               <column-text>
-                R001
+                R002
               </column-text>
             </td>
             <td>
@@ -479,7 +524,7 @@ exports[`Bank detects patterns 3`] = `
             </td>
             <td>
               <column-text>
-                clientA
+                clientB
               </column-text>
             </td>
             <td>
@@ -490,14 +535,16 @@ exports[`Bank detects patterns 3`] = `
             <td>
               <button
                 class="btn btn-primary"
-                data-testid="buttonEdit150"
+                data-testid="buttonEdit17"
                 type="button"
               >
                 Edit
               </button>
+            </td>
+            <td>
               <button
                 class="btn btn-primary"
-                data-testid="buttonDel150"
+                data-testid="buttonDel17"
                 type="button"
               >
                 Del
@@ -521,7 +568,7 @@ exports[`Bank detects patterns 3`] = `
     >
       Clear
     </button>
-  </div-page>
+  </div>
 </div>
 `;
 
@@ -529,11 +576,11 @@ exports[`Bank detects patterns 4`] = `
 <div
   data-testid="route/clients"
 >
-  <div-page
+  <div
     data-testid="tableClients"
   >
     <div
-      class="table-responsive"
+      style="overflow: auto; max-height: 80vh;"
     >
       <table
         class="table table-striped table-bordered table-hover"
@@ -568,7 +615,7 @@ exports[`Bank detects patterns 4`] = `
             </td>
             <td>
               <column-text>
-                555
+                +27
               </column-text>
             </td>
             <td>
@@ -584,6 +631,8 @@ exports[`Bank detects patterns 4`] = `
               >
                 Edit
               </button>
+            </td>
+            <td>
               <button
                 class="btn btn-primary"
                 data-testid="buttonDel11"
@@ -606,7 +655,7 @@ exports[`Bank detects patterns 4`] = `
             </td>
             <td>
               <column-text>
-                555
+                +27
               </column-text>
             </td>
             <td>
@@ -623,6 +672,8 @@ dd
               >
                 Edit
               </button>
+            </td>
+            <td>
               <button
                 class="btn btn-primary"
                 data-testid="buttonDel12"
@@ -649,16 +700,16 @@ dd
     >
       Clear
     </button>
-  </div-page>
+  </div>
 </div>
 `;
 
 exports[`Bank renders page 1`] = `
-<div-page
+<div
   data-testid="tableStatements"
 >
   <div
-    class="table-responsive"
+    style="overflow: auto; max-height: 80vh;"
   >
     <table
       class="table table-striped table-bordered table-hover"
@@ -679,5 +730,5 @@ exports[`Bank renders page 1`] = `
       <tbody />
     </table>
   </div>
-</div-page>
+</div>
 `;

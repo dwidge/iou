@@ -35,8 +35,8 @@ const App = () => {
 		<Navbar brand='IoU' pages={{
 			'/clients': { name: 'Clients', element: (<Clients stClients={stClients} newId={newRef(stSettings)('clnpre', 'clnnext')} />) },
 			'/invoices': { name: 'Invoices', element: (<Invoices stInvoices={stInvoices} aClients={stClients[0]} stSettings={stSettings} />) },
-			'/receipts': { name: 'Receipts', element: (<Receipts stReceipts={stReceipts} aClients={stClients[0]} stSettings={stSettings} />) },
-			'/bank': { name: 'Bank', element: (<Bank stReceipts={stReceipts} stClients={stClients} stSettings={stSettings} newClientId={newRef(stSettings)('clnpre', 'clnnext')}/>) },
+			'/receipts': { name: 'Receipts', element: (<Receipts stReceipts={stReceipts} aClients={stClients[0]} stInvoices={stInvoices} stSettings={stSettings} />) },
+			'/bank': { name: 'Bank', element: (<Bank stClients={stClients} stInvoices={stInvoices} stSettings={stSettings} stReceipts={stReceipts} newClientId={newRef(stSettings)('clnpre', 'clnnext')}/>) },
 			'/statements': { name: 'Statements', element: (<Statements aClients={stClients[0]} aInvoices={stInvoices[0]} aReceipts={stReceipts[0]} stSettings={stSettings} />) },
 			'/settings': { name: 'Settings', element: (<Settings stSettings={stSettings} />) },
 		}}/>

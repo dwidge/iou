@@ -47,7 +47,7 @@ function partition(array, filter) {
 const numFromStr = str =>
 	(+str.split(',').join('')).toFixed(2)
 
-const DetectReceipts = ({ stClients: [clients, clientsSet] = [], newClientId = uuid, stReceipts: [rec, setrec] = [], stSettings: [conf,, confSetKey] = [] }) => {
+const DetectReceipts = ({ stClients: [clients, clientsSet] = [], stInvoices: [invoices, invoicesSet] = [], newClientId = uuid, stReceipts: [rec, setrec] = [], stSettings: [conf,, confSetKey] = [] }) => {
 	const [msg, msgSet] = useState('')
 	const [txt, settxt] = useState('')
 	const [ignoretxt, ignoretxtSet] = [conf.txtIgnore || '', txtIgnore => confSetKey('txtIgnore', txtIgnore)]
@@ -86,11 +86,12 @@ const DetectReceipts = ({ stClients: [clients, clientsSet] = [], newClientId = u
 
 		const newReceiptRef = newRef([conf, null, confSetKey])('recpre', 'recnext')
 
-		const newReceipt = ({ date = today(), clientname = '', total = 0 } = {}, i) => ({
+		const newReceipt = ({ date = today(), clientname = '', invoice, total = 0 } = {}, i) => ({
 			id: uuid(),
 			ref: newReceiptRef(),
 			date,
 			client: clients.find(c => c.name === clientname).ref,
+			invoice,
 			total,
 		})
 
@@ -119,6 +120,7 @@ const DetectReceipts = ({ stClients: [clients, clientsSet] = [], newClientId = u
 		<Table name='Statements' schema={{
 			clientname: ColumnRef('Client', { all: clients, colRef: 'name', colView: 'ref', colDisplay: 'name' }),
 			create: ColumnButton('Create', (_, row) => addClient(row), (val, { clientname }) => clientname && !getItemBy(clients, clientname, 'name') ? ('Create ' + clientname) : ''),
+			invoice: ColumnRef('Invoice', { all: invoices, colRef: 'ref', colView: 'total', colDisplay: 'ref' }),
 			date: ColumnText('Date'),
 			desc: ColumnText('Desc'),
 			total: ColumnText('In/Out'),
@@ -137,6 +139,7 @@ const DetectReceipts = ({ stClients: [clients, clientsSet] = [], newClientId = u
 
 DetectReceipts.propTypes = {
 	stClients: PropTypes.array.isRequired,
+	stInvoices: PropTypes.array.isRequired,
 	stReceipts: PropTypes.array.isRequired,
 	stSettings: PropTypes.array.isRequired,
 	newClientId: PropTypes.func.isRequired,

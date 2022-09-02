@@ -621,6 +621,9 @@ exports[`Receipts renders page 1`] = `
             Client
           </th>
           <th>
+            Invoice
+          </th>
+          <th>
             Total
           </th>
         </tr>
@@ -771,6 +774,9 @@ exports[`Statements renders page 1`] = `
           </th>
           <th>
             BalanceDue
+          </th>
+          <th>
+            View
           </th>
           <th>
             Send

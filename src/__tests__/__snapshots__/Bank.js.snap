@@ -50,6 +50,9 @@ exports[`Bank detects patterns 1`] = `
               Create
             </th>
             <th>
+              Invoice
+            </th>
+            <th>
               Date
             </th>
             <th>
@@ -84,6 +87,11 @@ exports[`Bank detects patterns 1`] = `
                   type="button"
                 />
               </table-buttons>
+            </td>
+            <td>
+              <column-text>
+                -
+              </column-text>
             </td>
             <td>
               <column-text>
@@ -151,6 +159,11 @@ exports[`Bank detects patterns 1`] = `
             </td>
             <td>
               <column-text>
+                -
+              </column-text>
+            </td>
+            <td>
+              <column-text>
                 22/33/4444
               </column-text>
             </td>
@@ -212,6 +225,11 @@ exports[`Bank detects patterns 1`] = `
                   type="button"
                 />
               </table-buttons>
+            </td>
+            <td>
+              <column-text>
+                -
+              </column-text>
             </td>
             <td>
               <column-text>
@@ -365,6 +383,9 @@ exports[`Bank detects patterns 2`] = `
               Create
             </th>
             <th>
+              Invoice
+            </th>
+            <th>
               Date
             </th>
             <th>
@@ -466,6 +487,9 @@ exports[`Bank detects patterns 3`] = `
               Client
             </th>
             <th>
+              Invoice
+            </th>
+            <th>
               Total
             </th>
           </tr>
@@ -485,6 +509,11 @@ exports[`Bank detects patterns 3`] = `
             <td>
               <column-text>
                 clientA
+              </column-text>
+            </td>
+            <td>
+              <column-text>
+                -
               </column-text>
             </td>
             <td>
@@ -525,6 +554,11 @@ exports[`Bank detects patterns 3`] = `
             <td>
               <column-text>
                 clientB
+              </column-text>
+            </td>
+            <td>
+              <column-text>
+                -
               </column-text>
             </td>
             <td>
@@ -721,6 +755,9 @@ exports[`Bank renders page 1`] = `
           </th>
           <th>
             BalanceDue
+          </th>
+          <th>
+            View
           </th>
           <th>
             Send

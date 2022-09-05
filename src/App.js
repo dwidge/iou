@@ -7,6 +7,7 @@ import Receipts from './components/Receipts'
 import Bank from './components/Bank'
 import Statements from './components/Statements'
 import Settings from './components/Settings'
+import Data from './components/Data'
 import Navbar from './components/Navbar'
 import { newRef, useKeyVal } from './components/lib'
 
@@ -39,6 +40,7 @@ const App = () => {
 			'/bank': { name: 'Bank', element: (<Bank stClients={stClients} stInvoices={stInvoices} stSettings={stSettings} stReceipts={stReceipts} newClientId={newRef(stSettings)('clnpre', 'clnnext')}/>) },
 			'/statements': { name: 'Statements', element: (<Statements aClients={stClients[0]} aInvoices={stInvoices[0]} aReceipts={stReceipts[0]} stSettings={stSettings} />) },
 			'/settings': { name: 'Settings', element: (<Settings stSettings={stSettings} />) },
+			'/data': { name: 'Data', element: (<Data tables={{ clients: stClients, invoices: stInvoices, receipts: stReceipts, settings: stSettings }} />) },
 		}}/>
 	)
 }

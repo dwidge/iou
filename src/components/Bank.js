@@ -75,9 +75,10 @@ const DetectReceipts = ({ stClients: [clients, clientsSet] = [], stInvoices: [in
 		({ id: uuid(), ref: newClientId(), name, phone: '+27', patterns })
 
 	const addClient = ({ clientname, pattern } = {}) => {
+		clientname = clientname || window.prompt('Enter a name.', '')
 		if (clientname && !getItemBy(clients, clientname, 'name')) {
 			clientsSet(clients.concat(newClient({ name: clientname, patterns: pattern })))
-		} else alert(clientname ? clientname + ' exists.' : 'Enter a name.')
+		} else alert(clientname ? clientname + ' exists.' : 'Invalid name.')
 	}
 
 	const onAddAll = () => {
@@ -119,8 +120,8 @@ const DetectReceipts = ({ stClients: [clients, clientsSet] = [], stInvoices: [in
 		</Form>
 		<Table name='Statements' schema={{
 			clientname: ColumnRef('Client', { all: clients, colRef: 'name', colView: 'ref', colDisplay: 'name' }),
-			create: ColumnButton('Create', (_, row) => addClient(row), (val, { clientname }) => clientname && !getItemBy(clients, clientname, 'name') ? ('Create ' + clientname) : ''),
-			invoice: ColumnRef('Invoice', { all: invoices, colRef: 'ref', colView: 'total', colDisplay: 'ref' }),
+			create: ColumnButton('Create', (_, row) => addClient(row), (val, { clientname }) => clientname && !getItemBy(clients, clientname, 'name') ? ('Client ' + clientname) : 'Client'),
+			invoice: ColumnRef('Invoice', { all: invoices, colRef: 'ref', colView: 'date', colDisplay: 'ref' }),
 			date: ColumnText('Date'),
 			desc: ColumnText('Desc'),
 			total: ColumnText('In/Out'),

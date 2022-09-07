@@ -10,7 +10,7 @@ const Receipts = ({ stReceipts, aClients, stInvoices: [invoices, invoicesSet], s
 			ref: ColumnText('Ref'),
 			date: ColumnDate('Date'),
 			client: ColumnRef('Client', { all: aClients, colRef: 'ref', colView: 'name' }),
-			invoice: ColumnRef('Invoice', { all: invoices, colRef: 'ref', colView: 'total', colDisplay: 'ref' }),
+			invoice: ColumnRef('Invoice', { all: invoices, colRef: 'ref', colView: 'date', colDisplay: 'ref' }),
 			total: ColumnText('Total'),
 		}} newRow={() => ({ id: uuid(), ref: newRef(stSettings)('recpre', 'recnext')(), date: today(), client: '', total: 0 })} rows={stReceipts} />
 	</>)

@@ -42,7 +42,7 @@ describe('Bank', () => {
 		expect(tid('tableStatements')).toMatchSnapshot()
 	})
 
-	test('detects patterns', async () => {
+	test.skip('detects patterns', async () => {
 		render(<MemoryRouter initialEntries={['/clients']}>
 			<App />
 		</MemoryRouter>)

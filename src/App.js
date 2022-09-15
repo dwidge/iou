@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Storage } from '@dwidge/lib-react'
 
+import About from './components/About'
 import Clients from './components/Clients'
 import Invoices from './components/Invoices'
 import Receipts from './components/Receipts'
@@ -34,6 +35,7 @@ const App = () => {
 
 	return (
 		<Navbar brand='IoU' pages={{
+			'/': { name: 'About', element: (<About />) },
 			'/clients': { name: 'Clients', element: (<Clients stClients={stClients} newId={newRef(stSettings)('clnpre', 'clnnext')} />) },
 			'/invoices': { name: 'Invoices', element: (<Invoices stInvoices={stInvoices} aClients={stClients[0]} stSettings={stSettings} />) },
 			'/receipts': { name: 'Receipts', element: (<Receipts stReceipts={stReceipts} aClients={stClients[0]} stInvoices={stInvoices} stSettings={stSettings} />) },

@@ -6,6 +6,7 @@ import TinyXLSX from 'tiny-xlsx'
 import Card from 'react-bootstrap/Card'
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
+import * as G from './gapi'
 
 const Data = ({ tables: ts }) => {
 	const tables = Object.entries(ts)
@@ -20,7 +21,7 @@ const Data = ({ tables: ts }) => {
 	const isArray = a => a instanceof Array
 	// const isObject=a=>a instanceof Object
 
-	const importFormat = (importer, ext = '.txt', ts = tables, input) => {
+	const importFormat = (importer, ts = tables, input) => {
 		try {
 			if (!isClear(ts) && !confirm('Combine with existing?')) return
 
@@ -72,10 +73,17 @@ const Data = ({ tables: ts }) => {
 		})
 	}
 
+	const importGDrive = async (ts = tables) =>
+		importFormat(importJSON, ts, await G.load('iou.json'))
+
+	const exportGDrive = (ts = tables) =>
+		G.save('iou.json', exportJSON(ts))
+
 	const formats = {
 		CSV: ['.csv', importCSV, exportCSV],
 		XLSX: ['.xlsx', null, exportXLS],
 		JSON: ['.json', importJSON, exportJSON],
+		GDrive: ['GDrive', { button: importGDrive }, exportGDrive],
 	}
 
 	const Exports = ({ data }) =>
@@ -97,7 +105,7 @@ const Data = ({ tables: ts }) => {
 						<tbody>
 							{Object.entries(formats).map(([formatkey, [ext, importer, exporter]]) => (
 								<tr key={formatkey}>
-									<td>{importer ? (<ImportFile ext={ext} onAccept={(input) => importFormat(importer, ext, data, input)}/>) : ''}</td>
+									<td>{importer?.button ? (<Button onClick={() => importer.button(data)}>Import {ext}</Button>) : importer ? (<ImportFile ext={ext} onAccept={(input) => importFormat(importer, data, input)}/>) : ''}</td>
 									<td>{exporter ? (<Button onClick={() => exportFormat(exporter, ext, data)}>Export {ext}</Button>) : ''}</td>
 								</tr>),
 							)}
@@ -113,9 +121,6 @@ const Data = ({ tables: ts }) => {
 	return (
 		<div-page data-testid="pageData">
 			<Exports data={tables}/>
-			{tables.map(t => (
-				<div key={t[0]} className="mt-3"><Exports data={[t]}/></div>
-			))}
 			<p className="mt-3">Import/export to backup, transfer between devices or use with a spreadsheet program.</p>
 		</div-page>
 	)

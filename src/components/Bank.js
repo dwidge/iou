@@ -114,10 +114,11 @@ const DetectReceipts = ({ stClients: [clients, clientsSet] = [], stInvoices: [in
 
 	return (<>
 		<Alert show={!!msg} variant='success'>{msg}</Alert>
-		<p>Access a bank statement, press Ctrl+A, press Ctrl+C, then return here and click in the box below, press Ctrl+V.</p>
+		<p>Access a bank statement, press Ctrl+A (or select just the transactions), press Ctrl+C, then return here and click in the box below, press Ctrl+V.</p>
 		<Form>
 			<TextArea label='Bank statement' txt={[txt, settxt]} />
 		</Form>
+		<p>Pattern: *date*string*number*number*</p>
 		<Table name='Statements' schema={{
 			clientname: ColumnRef('Client', { all: clients, colRef: 'name', colView: 'ref', colDisplay: 'name' }),
 			create: ColumnButton('Create', (_, row) => addClient(row), (val, { clientname }) => clientname && !getItemBy(clients, clientname, 'name') ? ('Client ' + clientname) : 'Client'),

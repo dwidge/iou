@@ -6,7 +6,10 @@ import TinyXLSX from 'tiny-xlsx'
 import Card from 'react-bootstrap/Card'
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
+import GoogleId from './GoogleId'
 import * as G from './gapi'
+
+const appName = process.env.REACT_APP_NAME
 
 const Data = ({ tables: ts }) => {
 	const tables = Object.entries(ts)
@@ -74,19 +77,18 @@ const Data = ({ tables: ts }) => {
 	}
 
 	const importGDrive = async (ts = tables) =>
-		importFormat(importJSON, ts, await G.load('iou.json'))
+		importFormat(importJSON, ts, await G.load(appName + '.json'))
 
 	const exportGDrive = (ts = tables) =>
-		G.save('iou.json', exportJSON(ts))
+		G.save(appName + '.json', exportJSON(ts))
 
 	const formats = {
 		CSV: ['.csv', importCSV, exportCSV],
 		XLSX: ['.xlsx', null, exportXLS],
 		JSON: ['.json', importJSON, exportJSON],
-		GDrive: ['GDrive', { button: importGDrive }, exportGDrive],
 	}
 
-	const Exports = ({ data }) =>
+	const Summary = ({ data }) =>
 		(<>
 			<Card>
 				<Card.Body>
@@ -95,6 +97,17 @@ const Data = ({ tables: ts }) => {
 						<p key={key}>{key}: {isArray(get) ? get.length : Object.keys(get).join(' ')}</p>
 					))}
 					<Button onClick={() => clearAll(data)}>Clear</Button>
+				</Card.Body>
+			</Card>
+		</>)
+	Summary.propTypes = {
+		data: PropTypes.array.isRequired,
+	}
+
+	const Exports = ({ data, formats, className }) =>
+		(<div className={className}>
+			<Card>
+				<Card.Body>
 					<Table size="sm" className="mt-3">
 						<thead>
 							<tr>
@@ -105,23 +118,30 @@ const Data = ({ tables: ts }) => {
 						<tbody>
 							{Object.entries(formats).map(([formatkey, [ext, importer, exporter]]) => (
 								<tr key={formatkey}>
-									<td>{importer?.button ? (<Button onClick={() => importer.button(data)}>Import {ext}</Button>) : importer ? (<ImportFile ext={ext} onAccept={(input) => importFormat(importer, data, input)}/>) : ''}</td>
-									<td>{exporter ? (<Button onClick={() => exportFormat(exporter, ext, data)}>Export {ext}</Button>) : ''}</td>
+									<td>{importer?.button ? (<Button onClick={() => importer.button(data)}>Import from {ext}</Button>) : importer ? (<ImportFile ext={ext} onAccept={(input) => importFormat(importer, data, input)}/>) : ''}</td>
+									<td>{exporter ? (<Button onClick={() => exportFormat(exporter, ext, data)}>Export to {ext}</Button>) : ''}</td>
 								</tr>),
 							)}
 						</tbody>
 					</Table>
 				</Card.Body>
 			</Card>
-		</>)
+		</div>)
 	Exports.propTypes = {
 		data: PropTypes.array.isRequired,
+		formats: PropTypes.array.isRequired,
+		className: PropTypes.string,
 	}
 
 	return (
 		<div-page data-testid="pageData">
-			<Exports data={tables}/>
+			<Summary data={tables} />
 			<p className="mt-3">Import/export to backup, transfer between devices or use with a spreadsheet program.</p>
+			<Exports data={tables} formats={formats} className="mb-3"/>
+			<p>Load/save {appName}.json in Google Drive.</p>
+			<GoogleId>
+				<Exports data={tables} formats={{ GDrive: ['Google Drive', { button: importGDrive }, exportGDrive] }}/>
+			</GoogleId>
 		</div-page>
 	)
 }

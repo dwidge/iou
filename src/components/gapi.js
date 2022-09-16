@@ -157,3 +157,33 @@ export const load = async (name) => {
 	const file = (await listFile({ name })).files[0]
 	if (file) { return await downloadFile(file) }
 }
+
+export const button = async (id) => {
+	await loadScript('gclient', 'https://accounts.google.com/gsi/client')
+	const div = document.getElementById(id)
+
+	const response = await initId(div)
+	const payload = parseJwt(response.credential)
+	return { response, payload }
+}
+
+const initId = (div) => new Promise(resolve => {
+	window.google.accounts.id.initialize({
+		client_id: googleClientId,
+		callback: resolve,
+	})
+	window.google.accounts.id.renderButton(
+		div,
+		{ theme: 'outline', size: 'large' },
+	)
+	// window.google.accounts.id.prompt()
+})
+
+function parseJwt(token) {
+	const base64Url = token.split('.')[1]
+	const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/')
+	const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+		return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+	}).join(''))
+	return JSON.parse(jsonPayload)
+}

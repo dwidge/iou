@@ -1,3 +1,7 @@
+import isMatch from 'date-fns/isMatch'
+import parse from 'date-fns/parse'
+import format from 'date-fns/format'
+
 export const sendWatsapp = (num, text, localdialcode = '+27') => {
 	if (!num) return alert('Couldn\'t send, needs number')
 	if (num[0] !== '+') num = localdialcode + num.slice(1)
@@ -71,3 +75,22 @@ export const sleep = async (t = 2000) =>
 	})
 
 export const promisify = f => (...a) => new Promise((resolve, reject) => f(...a, resolve, reject))
+
+// stackoverflow.com/a/50636286
+export function partition(array, filter) {
+	const pass = []; const fail = []
+	array.forEach((e, idx, arr) => (filter(e, idx, arr) ? pass : fail).push(e))
+	return [pass, fail]
+}
+
+export const numFromStr = str =>
+	(+str.split(',').join('')).toFixed(2)
+
+export const dateFromStr = (value, date = dateFromStrAny(value)) =>
+	date ? format(date, 'yyyy-MM-dd') : ''
+
+const dateFromStrAny = (s, value = s.replace(/\//g, '-')) =>
+	dateFromStrFormat(value, 'dd-MM-yyyy') || dateFromStrFormat(value, 'yyyy-MM-dd')
+
+const dateFromStrFormat = (value, format) =>
+	isMatch(value, format) && parse(value, format, new Date())

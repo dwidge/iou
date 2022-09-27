@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Table, ColumnText, ColumnRef, ColumnButton, getItemBy } from '@dwidge/table-react'
 import { today, uuid, unique, replaceItemById } from '@dwidge/lib'
-import { newRef } from './lib'
+import { newRef, partition, numFromStr, dateFromStr } from './lib'
 import wcmatch from 'wildcard-match'
 
 import Form from 'react-bootstrap/Form'
@@ -10,8 +10,15 @@ import Button from 'react-bootstrap/Button'
 import Alert from 'react-bootstrap/Alert'
 import TextArea from './TextArea'
 
+const txtBankStatementDefault = `
+22/02/2020 payment from clientA 50 100
+2020/02/28 shop2 888 200 300
+2020/04/03 ref:779I 200 * 300
+2020-04-05 ref:787I 200 * 300
+`.trim()
+
 const regDate =
-'[0-9]{1,2}[/-][0-9]{1,2}[/-][0-9]{4}'
+'[0-9]{1,4}[/-][0-9]{1,2}[/-][0-9]{1,4}'
 const regNum =
 '\\d+(?:[\\,]\\d+)*(?:[\\.]\\d+)?'
 const regStr = '.+'
@@ -37,16 +44,6 @@ const calcPattern = s =>
 
 const findReceipt = all => ({ date, client, total }) => all.find(r => r.date === date && r.client === client && (+r.total) === (+total))
 
-// stackoverflow.com/a/50636286
-function partition(array, filter) {
-	const pass = []; const fail = []
-	array.forEach((e, idx, arr) => (filter(e, idx, arr) ? pass : fail).push(e))
-	return [pass, fail]
-}
-
-const numFromStr = str =>
-	(+str.split(',').join('')).toFixed(2)
-
 const DetectReceipts = ({ stClients: [clients, clientsSet] = [], stInvoices: [invoices, invoicesSet] = [], newClientId = uuid, stReceipts: [rec, setrec] = [], stSettings: [conf,, confSetKey] = [] }) => {
 	const [msg, msgSet] = useState('')
 	const [txt, settxt] = useState('')
@@ -60,7 +57,7 @@ const DetectReceipts = ({ stClients: [clients, clientsSet] = [], stInvoices: [in
 			return ({
 				id: uuid(),
 				clientname: match[0],
-				date,
+				date: dateFromStr(date),
 				desc,
 				total: numFromStr(total),
 				balance: numFromStr(balance),
@@ -116,9 +113,9 @@ const DetectReceipts = ({ stClients: [clients, clientsSet] = [], stInvoices: [in
 		<Alert show={!!msg} variant='success'>{msg}</Alert>
 		<p>Access a bank statement, press Ctrl+A (or select just the transactions), press Ctrl+C, then return here and click in the box below, press Ctrl+V.</p>
 		<Form>
-			<TextArea label='Bank statement' txt={[txt, settxt]} />
+			<TextArea label='Bank statement' txt={[txt, settxt]} placeholder={txtBankStatementDefault} />
 		</Form>
-		<p>Pattern: *date*string*number*number*</p>
+		<p>Pattern: *date string number * number*</p>
 		<Table name='Statements' schema={{
 			clientname: ColumnRef('Client', { all: clients, colRef: 'name', colView: 'ref', colDisplay: 'name' }),
 			create: ColumnButton('Create', (_, row) => addClient(row), (val, { clientname }) => clientname && !getItemBy(clients, clientname, 'name') ? ('Client ' + clientname) : 'Client'),

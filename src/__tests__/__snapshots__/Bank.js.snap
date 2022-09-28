@@ -751,16 +751,26 @@ exports[`Bank renders page 1`] = `
       <thead>
         <tr>
           <th>
-            ClientRef
+            <a>
+              ClientRef
+               
+            </a>
           </th>
           <th>
-            BalanceDue
+            <a>
+              BalanceDue
+               
+            </a>
           </th>
           <th>
-            View
+            <a>
+               
+            </a>
           </th>
           <th>
-            Send
+            <a>
+               
+            </a>
           </th>
         </tr>
       </thead>

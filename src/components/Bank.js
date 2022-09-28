@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Table, ColumnText, ColumnRef, ColumnButton, getItemBy } from '@dwidge/table-react'
 import { today, uuid, unique, replaceItemById } from '@dwidge/lib'
-import { newRef, partition, numFromStr, dateFromStr } from './lib'
+import { newRef, partition, formatDate, parsePrice, formatPrice } from './lib'
 import wcmatch from 'wildcard-match'
 
 import Form from 'react-bootstrap/Form'
@@ -57,10 +57,10 @@ const DetectReceipts = ({ stClients: [clients, clientsSet] = [], stInvoices: [in
 			return ({
 				id: uuid(),
 				clientname: match[0],
-				date: dateFromStr(date),
+				date: formatDate(date),
 				desc,
-				total: numFromStr(total),
-				balance: numFromStr(balance),
+				total: parsePrice(total),
+				balance: parsePrice(balance),
 				match: match.join('\n'),
 				pattern: calcPattern(desc),
 			})
@@ -71,11 +71,13 @@ const DetectReceipts = ({ stClients: [clients, clientsSet] = [], stInvoices: [in
 	const newClient = ({ name, patterns }) =>
 		({ id: uuid(), ref: newClientId(), name, phone: '+27', patterns })
 
-	const addClient = ({ clientname, pattern } = {}) => {
-		clientname = clientname || window.prompt('Enter a name.', '')
-		if (clientname && !getItemBy(clients, clientname, 'name')) {
-			clientsSet(clients.concat(newClient({ name: clientname, patterns: pattern })))
-		} else alert(clientname ? clientname + ' exists.' : 'Invalid name.')
+	const addClient = (row = {}) => {
+		const clientname = window.prompt('Enter a name.', row.clientname || '')
+		if (!clientname) return
+
+		if (!getItemBy(clients, clientname, 'name')) { clientsSet(clients.concat(newClient({ name: clientname, patterns: row.pattern }))) }
+
+		setreceipts(replaceItemById(receipts, { ...row, clientname }))
 	}
 
 	const onAddAll = () => {
@@ -122,8 +124,8 @@ const DetectReceipts = ({ stClients: [clients, clientsSet] = [], stInvoices: [in
 			invoice: ColumnRef('Invoice', { all: invoices, colRef: 'ref', colView: 'date', colDisplay: 'ref' }),
 			date: ColumnText('Date'),
 			desc: ColumnText('Desc'),
-			total: ColumnText('In/Out'),
-			balance: ColumnText('Balance'),
+			total: ColumnText('In/Out', formatPrice),
+			balance: ColumnText('Balance', formatPrice),
 			match: ColumnText('Match'),
 			pattern: ColumnText('Pattern'),
 		}} rows={[receipts, setreceipts]} newRow={() => ({ id: uuid() })} addDel={true} inlineHeadersEdit={false} />

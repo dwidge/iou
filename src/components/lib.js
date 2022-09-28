@@ -83,14 +83,28 @@ export function partition(array, filter) {
 	return [pass, fail]
 }
 
-export const numFromStr = str =>
-	(+str.split(',').join('')).toFixed(2)
+export const parsePrice = s =>
+	+('' + s).split(',').join('')
 
-export const dateFromStr = (value, date = dateFromStrAny(value)) =>
-	date ? format(date, 'yyyy-MM-dd') : ''
+export const printPrice = n =>
+	n.toFixed(2)
 
-const dateFromStrAny = (s, value = s.replace(/\//g, '-')) =>
-	dateFromStrFormat(value, 'dd-MM-yyyy') || dateFromStrFormat(value, 'yyyy-MM-dd')
+export const formatPrice = s =>
+	printPrice(parsePrice(s))
 
-const dateFromStrFormat = (value, format) =>
-	isMatch(value, format) && parse(value, format, new Date())
+export const parseDate = (s) => {
+	const matchparse = (s, f) =>
+		isMatch(s, f) && parse(s, f, new Date())
+
+	const d = ('' + s).replace(/[/ -]/g, '-')
+	return matchparse(d, 'dd-MM-yyyy') || matchparse(d, 'yyyy-MM-dd')
+}
+
+export const printDate = d =>
+	d ? format(d, 'yyyy/MM/dd') : '-'
+
+export const formatDate = s =>
+	printDate(parseDate(s))
+
+export const byDateAsc = col => (a, b) =>
+	parseDate(a[col]) - parseDate(b[col])

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Table, ColumnText, ColumnDate, ColumnRef, ColumnButton, getItemBy } from '@dwidge/table-react'
 import { today, uuid } from '@dwidge/lib'
-import { sendWatsapp, replaceKV, newRef } from './lib'
+import { sendWatsapp, replaceKV, newRef, formatDate, formatPrice, parsePrice } from './lib'
 import { onChange } from '@dwidge/lib-react'
 
 import Form from 'react-bootstrap/Form'
@@ -28,7 +28,10 @@ const fields = (row, client) => ({
 	'[total]': (+row.total).toFixed(2),
 })
 
-const Invoices = ({ stInvoices, aClients, stSettings }) => {
+const parseInvoices = a =>
+	a.map(({ date, total, ...r }) => ({ ...r, date: formatDate(date), total: parsePrice(total) }))
+
+const Invoices = ({ stInvoices: [invoices, invoicesSet], aClients, stSettings }) => {
 	const [settings, setsettings] = stSettings
 	const txt = settings.txtInvoice || txtDefault
 
@@ -38,12 +41,12 @@ const Invoices = ({ stInvoices, aClients, stSettings }) => {
 			client: ColumnRef('ClientRef', { all: aClients, colRef: 'ref', colView: 'name' }),
 			date: ColumnDate('Date'),
 			summary: ColumnText('Summary'),
-			total: ColumnText('Total'),
-			_send: ColumnButton('Send', (_, row) => {
+			total: ColumnText('Total', formatPrice),
+			_send: ColumnButton('', (_, row) => {
 				const client = getItemBy(aClients, row.client, 'ref')
 				sendWatsapp(client?.phone, replaceKV(txt)(fields(row, client)))
 			}, () => 'Send'),
-		}} newRow={() => ({ id: uuid(), ref: newRef(stSettings)('invpre', 'invnext')(), client: '', date: today(), summary: '', total: 0 })} rows={stInvoices} inlineHeadersEdit={true} />
+		}} newRow={() => ({ id: uuid(), ref: newRef(stSettings)('invpre', 'invnext')(), client: '', date: today(), summary: '', total: 0 })} rows={[parseInvoices(invoices), invoicesSet]} inlineHeadersEdit={true} />
 		<Settings txt={[txt, txtInvoice => setsettings({ ...settings, txtInvoice })]} refPre={[settings.invpre, invpre => setsettings({ ...settings, invpre })]} refNext={[settings.invnext, invnext => setsettings({ ...settings, invnext })]} />
 	</>)
 }

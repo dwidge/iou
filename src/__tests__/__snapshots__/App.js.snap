@@ -13,16 +13,28 @@ exports[`Clients confirms & clears list 1`] = `
       <thead>
         <tr>
           <th>
-            Ref
+            <a>
+              Ref
+               
+            </a>
           </th>
           <th>
-            Name
+            <a>
+              Name
+               
+            </a>
           </th>
           <th>
-            Phone
+            <a>
+              Phone
+               
+            </a>
           </th>
           <th>
-            Patterns
+            <a>
+              Patterns
+               
+            </a>
           </th>
         </tr>
       </thead>
@@ -96,16 +108,28 @@ exports[`Clients confirms & clears list 2`] = `
       <thead>
         <tr>
           <th>
-            Ref
+            <a>
+              Ref
+               
+            </a>
           </th>
           <th>
-            Name
+            <a>
+              Name
+               
+            </a>
           </th>
           <th>
-            Phone
+            <a>
+              Phone
+               
+            </a>
           </th>
           <th>
-            Patterns
+            <a>
+              Patterns
+               
+            </a>
           </th>
         </tr>
       </thead>
@@ -179,16 +203,28 @@ exports[`Clients confirms & clears list 3`] = `
       <thead>
         <tr>
           <th>
-            Ref
+            <a>
+              Ref
+               
+            </a>
           </th>
           <th>
-            Name
+            <a>
+              Name
+               
+            </a>
           </th>
           <th>
-            Phone
+            <a>
+              Phone
+               
+            </a>
           </th>
           <th>
-            Patterns
+            <a>
+              Patterns
+               
+            </a>
           </th>
         </tr>
       </thead>
@@ -225,16 +261,28 @@ exports[`Clients enters another into list 1`] = `
       <thead>
         <tr>
           <th>
-            Ref
+            <a>
+              Ref
+               
+            </a>
           </th>
           <th>
-            Name
+            <a>
+              Name
+               
+            </a>
           </th>
           <th>
-            Phone
+            <a>
+              Phone
+               
+            </a>
           </th>
           <th>
-            Patterns
+            <a>
+              Patterns
+               
+            </a>
           </th>
         </tr>
       </thead>
@@ -308,16 +356,28 @@ exports[`Clients enters another into list 2`] = `
       <thead>
         <tr>
           <th>
-            Ref
+            <a>
+              Ref
+               
+            </a>
           </th>
           <th>
-            Name
+            <a>
+              Name
+               
+            </a>
           </th>
           <th>
-            Phone
+            <a>
+              Phone
+               
+            </a>
           </th>
           <th>
-            Patterns
+            <a>
+              Patterns
+               
+            </a>
           </th>
         </tr>
       </thead>
@@ -429,16 +489,28 @@ exports[`Clients enters into list 1`] = `
       <thead>
         <tr>
           <th>
-            Ref
+            <a>
+              Ref
+               
+            </a>
           </th>
           <th>
-            Name
+            <a>
+              Name
+               
+            </a>
           </th>
           <th>
-            Phone
+            <a>
+              Phone
+               
+            </a>
           </th>
           <th>
-            Patterns
+            <a>
+              Patterns
+               
+            </a>
           </th>
         </tr>
       </thead>
@@ -514,16 +586,28 @@ exports[`Clients renders page 1`] = `
       <thead>
         <tr>
           <th>
-            Ref
+            <a>
+              Ref
+               
+            </a>
           </th>
           <th>
-            Name
+            <a>
+              Name
+               
+            </a>
           </th>
           <th>
-            Phone
+            <a>
+              Phone
+               
+            </a>
           </th>
           <th>
-            Patterns
+            <a>
+              Patterns
+               
+            </a>
           </th>
         </tr>
       </thead>
@@ -560,22 +644,39 @@ exports[`Invoices renders page 1`] = `
       <thead>
         <tr>
           <th>
-            InvoiceRef
+            <a>
+              InvoiceRef
+               
+            </a>
           </th>
           <th>
-            ClientRef
+            <a>
+              ClientRef
+               
+            </a>
           </th>
           <th>
-            Date
+            <a>
+              Date
+               
+            </a>
           </th>
           <th>
-            Summary
+            <a>
+              Summary
+               
+            </a>
           </th>
           <th>
-            Total
+            <a>
+              Total
+               
+            </a>
           </th>
           <th>
-            Send
+            <a>
+               
+            </a>
           </th>
         </tr>
       </thead>
@@ -612,19 +713,34 @@ exports[`Receipts renders page 1`] = `
       <thead>
         <tr>
           <th>
-            Ref
+            <a>
+              Ref
+               
+            </a>
           </th>
           <th>
-            Date
+            <a>
+              Date
+               
+            </a>
           </th>
           <th>
-            Client
+            <a>
+              Client
+               
+            </a>
           </th>
           <th>
-            Invoice
+            <a>
+              Invoice
+               
+            </a>
           </th>
           <th>
-            Total
+            <a>
+              Total
+               
+            </a>
           </th>
         </tr>
       </thead>
@@ -770,16 +886,26 @@ exports[`Statements renders page 1`] = `
       <thead>
         <tr>
           <th>
-            ClientRef
+            <a>
+              ClientRef
+               
+            </a>
           </th>
           <th>
-            BalanceDue
+            <a>
+              BalanceDue
+               
+            </a>
           </th>
           <th>
-            View
+            <a>
+               
+            </a>
           </th>
           <th>
-            Send
+            <a>
+               
+            </a>
           </th>
         </tr>
       </thead>

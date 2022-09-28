@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { Table, ColumnText, ColumnRef, ColumnButton, getItemBy } from '@dwidge/table-react'
 import { today, uuid } from '@dwidge/lib'
-import { sendWatsapp, replaceKV } from './lib'
+import { sendWatsapp, replaceKV, formatDate, formatPrice, byDateAsc } from './lib'
 import BTable from 'react-bootstrap/Table'
 import BButton from 'react-bootstrap/Button'
 import genTable from 'text-table'
@@ -30,21 +30,6 @@ const fields = (row, client, preview) => ({
 	'[table]': preview && genTable(preview.map(({ date = '-', ref = '-', desc = '-', total = '-' }) => [date, ref, desc, total])),
 })
 
-const { parse, format, isValid } = require('date-fns')
-const parseDate = (s, f) => {
-	const d = parse(s, f, new Date())
-	if (isValid(d)) return d
-}
-
-const parseDateAny = s =>
-	parseDate(s.replace(/[/ -]/g, '.'), 'dd.MM.yyyy') ||
-parseDate(s.replace(/[/ -]/g, '.'), 'yyyy.MM.dd')
-const formatDate = d =>
-	d ? format(d, 'yyyy/MM/dd') : '-'
-
-const byDateAsc = col => (a, b) =>
-	parseDateAny(a[col]) - parseDateAny(b[col])
-
 const Statements = ({ aClients, aInvoices, aReceipts, stSettings }) => {
 	const sum = (t, v) => (+t || 0) + (+v || 0)
 
@@ -68,7 +53,7 @@ const Statements = ({ aClients, aInvoices, aReceipts, stSettings }) => {
 
 	const genPreview = (row, client) => {
 		const invoicerows = aInvoices.filter(inv => inv.client === client.ref)
-		const receiptrows = aReceipts.filter(inv => inv.client === client.ref).map(r => ({ ...r, desc: 'payment', date: formatDate(parseDateAny(r.date)) }))
+		const receiptrows = aReceipts.filter(inv => inv.client === client.ref).map(r => ({ ...r, desc: 'payment', date: formatDate(r.date), total: formatPrice(r.total) }))
 		return invoicerows.concat(receiptrows).sort(byDateAsc('date'))
 	}
 	const previewRef = useRef()
@@ -77,12 +62,12 @@ const Statements = ({ aClients, aInvoices, aReceipts, stSettings }) => {
 	return (<>
 		<Table name='Statements' schema={{
 			client: ColumnRef('ClientRef', { all: aClients, colRef: 'ref', colView: 'name' }),
-			balance: ColumnText('BalanceDue'),
-			view: ColumnButton('View', (_, row, client = getItemBy(aClients, row.client, 'ref')) => {
+			balance: ColumnText('BalanceDue', formatPrice),
+			view: ColumnButton('', (_, row, client = getItemBy(aClients, row.client, 'ref')) => {
 				previewSet({ rows: genPreview(row, client), client })
 				scroll(previewRef)
 			}, () => 'View'),
-			send: ColumnButton('Send', (_, row, client = getItemBy(aClients, row.client, 'ref')) => sendWatsapp(client?.phone, replaceKV(txt)(fields(row, client, genPreview(row, client)))), () => 'Send'),
+			send: ColumnButton('', (_, row, client = getItemBy(aClients, row.client, 'ref')) => sendWatsapp(client?.phone, replaceKV(txt)(fields(row, client, genPreview(row, client)))), () => 'Send'),
 		}} rows={[statements, () => {}]} newRow={() => {}} addDel={false} />
 		<p ref={previewRef} className='pt-3'>
 			{preview

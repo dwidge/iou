@@ -8,7 +8,8 @@
 			"sizes": "512x512 192x192 64x64 32x32 24x24 16x16"
 		}
 	],
-	"start_url": "%PUBLIC_URL%",
+	"start_url": "./",
+	"scope": ".",
 	"display": "standalone",
 	"theme_color": "#2fa4e7",
 	"background_color": "#ffffff"
